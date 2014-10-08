@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="basicstruts2" extends="struts-default">
+		<action name="login" class="Login" method="execute">
+			<result name="success">/successLogin.jsp</result>
+			<result name="wrong">/wrongAccount.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="register_one" class="Register" method="try_user_name">
+			<result name="success">/RegisterMoreInfo.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="exist">/exist.jsp</result>
+			<result name="overflow">/overflow.jsp</result>
+		</action>
+		<action name="register_two" class="Register" method="execute">
+			<result name="success">/successLogin.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="overflow">/overflow.jsp</result>
+		</action>
+	</package>
+</struts>    
