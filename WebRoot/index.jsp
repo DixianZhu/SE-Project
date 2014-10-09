@@ -7,6 +7,7 @@
 </head>
 <body>
         This is B2 change 1
+		This is C4 change 1
 	<h1>Trip Guider</h1>
 	<s:form action="login">
 		<s:textfield name="userName" label="username" />
