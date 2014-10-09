@@ -13,5 +13,6 @@
 		<s:submit />
 	</s:form>
 	<input type="button" value="Register" onclick="window.location.href='Register.jsp';"/>
+	change 1
 </body>
 </html>
