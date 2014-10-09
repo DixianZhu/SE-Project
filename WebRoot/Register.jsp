@@ -4,6 +4,7 @@
 <title>Register</title>
 
 <body>
+    This is B3 change 2
 	<h1>Please type in your user name</h1>
 	<s:form action="register_one" >
 <s:textfield name="userName" label="user name"/><br>
