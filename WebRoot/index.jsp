@@ -6,6 +6,7 @@
 <s:head />
 </head>
 <body>
+        This is B3 change 1
 	<h1>Trip Guider</h1>
 	<s:form action="login">
 		<s:textfield name="userName" label="username" />
