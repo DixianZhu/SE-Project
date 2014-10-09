@@ -6,8 +6,13 @@
 <s:head />
 </head>
 <body>
+<<<<<<< HEAD
         This is B2 change 1
 		This is C4 change 1
+=======
+        This is B3 change 1
+		This is B3 change 2
+>>>>>>> B3
 	<h1>Trip Guider</h1>
 	<s:form action="login">
 		<s:textfield name="userName" label="username" />
