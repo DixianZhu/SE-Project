@@ -76,6 +76,7 @@ public class Login extends ActionSupport {
 				location=rs.getString("location");
 				occupation=rs.getString("occupation");
 				hobby=rs.getString("hobby");
+				System.out.println("login :The userName is :"+userName);
 				return SUCCESS;
 			}else{
 				return "wrong";

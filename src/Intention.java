@@ -19,6 +19,7 @@ public class Intention extends ActionSupport {
 	private String user = "root";
 	private String psw = "2121778";
 	private ArrayList<String[]> res = new ArrayList<String[]>();
+	
 
 	public void setIntendPlace(String intendPlace) {
 		this.intendPlace = intendPlace;
@@ -99,21 +100,25 @@ public class Intention extends ActionSupport {
 	public String getUserName() {
 		return userName;
 	}
-	
-	public ArrayList<String[]> getRes(){
+
+	public ArrayList<String[]> getRes() {
 		return res;
 	}
-	
-	
-	
-    public String contactUserName() throws Exception{
-    	return SUCCESS;
-    }
-    public String showIntentionOne() throws Exception{
-    	Connection conn = null;
-		ResultSet rs=null;
+
+	public String contactUserName() throws Exception {
+		byte[] str = userName.getBytes("ISO-8859-1");
+		userName=new String(str);
+		System.out.println("contact :"+userName);
+		return SUCCESS;
+	}
+
+	public String showIntentionOne() throws Exception {
+		Connection conn = null;
+		ResultSet rs = null;
 		Statement stmt = null;
-		System.out.println("The userName is:"+userName);
+		byte[] str = userName.getBytes("ISO-8859-1");
+		userName=new String(str);
+		System.out.println("i1:The userName is:" + userName);
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(url, user, psw);
@@ -122,31 +127,76 @@ public class Intention extends ActionSupport {
 			else
 				System.out.println("Fail connecting to the Database!");
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select * from intention where user_name = '"
-					+ userName + "'");
-			String[] temp=new String[3];
-	        if(rs.next()){
-	        	do{
-	        		temp[0]=rs.getString("i_place");
-	        		temp[1]=rs.getString("i_time_floor");
-	        		temp[2]=rs.getString("i_time_ceiling");
-	        		res.add(temp);
-	        	}while(rs.next());
-	        	return SUCCESS;
-	        }else{
-	        	return ERROR;
-	        }
+			rs = stmt
+					.executeQuery("select * from intention where user_name = '"
+							+ userName + "'");
+			if (rs.next()) {
+				do {
+					String[] temp = new String[3];
+					temp[0] = rs.getString("i_place");
+					System.out.println(temp[0]);
+					temp[1] = rs.getString("i_time_floor");
+					temp[2] = rs.getString("i_time_ceiling");
+					res.add(temp);
+				} while (rs.next());
+				return SUCCESS;
+			} else {
+				return ERROR;
+			}
 		} catch (Exception e) {
 			System.out.print("connection error!");
 			e.printStackTrace();
 			return ERROR;
 		}
-    }
+	}
+
+	public String showIntentionTwo() throws Exception {
+		Connection conn = null;
+		ResultSet rs = null;
+		Statement stmt = null;
+		byte[] str = intendPlace.getBytes("ISO-8859-1");
+		intendPlace=new String(str);
+		str = userName.getBytes("ISO-8859-1");
+		userName=new String(str);
+		System.out.println("i2:The userName is:" + userName);
+		System.out.println("i2:The intendPlace is:" + intendPlace);
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(url, user, psw);
+			if (!conn.isClosed())
+				System.out.println("Success connecting to the Database!");
+			else
+				System.out.println("Fail connecting to the Database!");
+			stmt = conn.createStatement();
+			rs = stmt
+					.executeQuery("select * from intention where user_name = '"
+							+ userName + "'and i_Place = '" + intendPlace + "'");
+			if (rs.next()) {
+				intendPlace = rs.getString("i_place");
+				intendTimeFloor = rs.getString("i_time_floor");
+				intendTimeCeiling = rs.getString("i_time_ceiling");
+				intendPrice = rs.getString("i_price");
+				intendFriendAge = rs.getString("i_friend_age");
+				intendFriendGender = rs.getString("i_friend_gender");
+				intendFriendLocation = rs.getString("i_friend_location");
+				intendFriendOccupation = rs.getString("i_friend_occupation");
+				intendFriendHobby = rs.getString("i_friend_hobby");
+				return SUCCESS;
+			} else {
+				return ERROR;
+			}
+		} catch (Exception e) {
+			System.out.print("connection error!");
+			e.printStackTrace();
+			return ERROR;
+		}
+	}
+
 	public String addIntention() throws Exception {
 		Connection conn = null;
 		int addCount = 0;
 		Statement stmt = null;
-		System.out.println("The userName is:"+userName);
+		System.out.println("The userName is:" + userName);
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(url, user, psw);
@@ -177,8 +227,10 @@ public class Intention extends ActionSupport {
 							+ intendFriendOccupation
 							+ "','"
 							+ intendFriendHobby + "')");
-			if(addCount==1) return SUCCESS;
-			else return ERROR;
+			if (addCount == 1)
+				return SUCCESS;
+			else
+				return ERROR;
 		} catch (Exception e) {
 			System.out.print("connection error!");
 			e.printStackTrace();

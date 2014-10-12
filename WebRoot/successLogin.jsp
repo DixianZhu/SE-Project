@@ -4,6 +4,7 @@
 <html>
 <body>
 	<h1>Successful login!</h1>
+	<br>user name is <s:property value="userName"/>
 	Hello! These are your information:
 	<br>
 	<table border='1' >
