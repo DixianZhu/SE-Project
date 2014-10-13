@@ -1,4 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*"%>
+<%@ page contentType="text/html;charset=utf-8" pageEncoding="GBK"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <title>Register</title>

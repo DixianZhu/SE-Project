@@ -1,4 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*"%>
+<%@ page contentType="text/html;charset=utf-8" pageEncoding="GBK"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <head>
@@ -8,15 +9,15 @@
 <body>
 	<h1>Trip Guider - Add Intention</h1>
 	<s:form action="addIntention">
-		<s:textfield name="intendPlace" label="æƒ³åŽ»çš„æ™¯ç‚¹" />
-		<s:textfield name="intendTimeFloor" label="æœŸæœ›çš„æ—¶é—´ï¼ˆæœ€æ—©ï¼‰" />
-		<s:textfield name="intendTimeCeiling" label="æœŸæœ›çš„æ—¶é—´ï¼ˆæœ€æ™šï¼‰" />
-		<s:textfield name="intendPrice" label="æœŸæœ›çš„èŠ±è´¹(äººæ°‘å¸)" />
-		<s:textfield name="intendFriendAge" label="æœŸæœ›åŒä¼´çš„å¹´é¾„"/>
-		<s:textfield name="intendFriendGender" label="æœŸæœ›åŒä¼´çš„æ€§åˆ«"/>
-		<s:textfield name="intendFriendOccupation" label="æœŸæœ›åŒä¼´çš„å·¥ä½œ"/>
-		<s:textfield name="intendFriendLocation" label="æœŸæœ›åŒä¼´çš„åœ°åŸŸ"/>
-		<s:textfield name="intendFriendHobby" label="æœŸæœ›åŒä¼´çš„çˆ±å¥½" />
+		<s:textfield name="intendPlace" label="ÏëÈ¥µÄ¾°µã" />
+		<s:textfield name="intendTimeFloor" label="ÆÚÍûµÄÊ±¼ä£¨×îÔç£©" />
+		<s:textfield name="intendTimeCeiling" label="ÆÚÍûµÄÊ±¼ä£¨×îÍí£©" />
+		<s:textfield name="intendPrice" label="ÆÚÍûµÄ»¨·Ñ(ÈËÃñ±Ò)" />
+		<s:textfield name="intendFriendAge" label="ÆÚÍûÍ¬°éµÄÄêÁä"/>
+		<s:textfield name="intendFriendGender" label="ÆÚÍûÍ¬°éµÄÐÔ±ð"/>
+		<s:textfield name="intendFriendOccupation" label="ÆÚÍûÍ¬°éµÄ¹¤×÷"/>
+		<s:textfield name="intendFriendLocation" label="ÆÚÍûÍ¬°éµÄµØÓò"/>
+		<s:textfield name="intendFriendHobby" label="ÆÚÍûÍ¬°éµÄ°®ºÃ" />
 		<s:hidden name="userName" label="userName"/>
 		<s:submit />
 	</s:form>

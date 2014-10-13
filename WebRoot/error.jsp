@@ -1,4 +1,6 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*"%>
+<%@ page contentType="text/html;charset=utf-8" pageEncoding="GBK"%>
+
 <html>
 <body>
 		<h1>System Error</h1>

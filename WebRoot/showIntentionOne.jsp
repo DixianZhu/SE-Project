@@ -1,5 +1,5 @@
-<%@ page language="java" import="java.util.*,java.sql.*"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,java.sql.*"%>
+<%@ page contentType="text/html;charset=utf-8" pageEncoding="GBK"%> 
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <body>
@@ -7,14 +7,14 @@
 	<br>
 	<s:iterator value="res" status="itStatus" id='n'>
 		<li><s:property value="#itStatus.count" />:
-		 ç›®çš„åœ°:<s:property value='#n[0]'/>&nbsp;&nbsp;
-		 æœ€æ—©å‡ºå‘æ—¶é—´:<s:property value='#n[1]'/>&nbsp;&nbsp;
-		æœ€è¿Ÿå‡ºå‘æ—¶é—´:<s:property value='#n[2]'/>&nbsp;&nbsp;&nbsp;&nbsp;
+		 Ä¿µÄµØ:<s:property value='#n[0]'/>&nbsp;&nbsp;
+		 ×îÔç³ö·¢Ê±¼ä:<s:property value='#n[1]'/>&nbsp;&nbsp;
+		×î³Ù³ö·¢Ê±¼ä:<s:property value='#n[2]'/>&nbsp;&nbsp;&nbsp;&nbsp;
 		<a
 			href='<s:url action="showIntentionTwo">
 		<s:param name="userName" value="userName" />
 		<s:param name="intendPlace" value="#n[0]" />
-				  </s:url>'>è¯¦ç»†ä¿¡æ¯
+				  </s:url>'>ÏêÏ¸ĞÅÏ¢
 				</a>
 	</s:iterator>
 	<br>

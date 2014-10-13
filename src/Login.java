@@ -82,7 +82,7 @@ public class Login extends ActionSupport {
 				return "wrong";
 			}
 		}catch (Exception e) {
-			System.out.print("connection error!");
+			System.out.println("connection error!");
 			e.printStackTrace();
 			return ERROR;
 		}

@@ -106,8 +106,8 @@ public class Intention extends ActionSupport {
 	}
 
 	public String contactUserName() throws Exception {
-		byte[] str = userName.getBytes("ISO-8859-1");
-		userName=new String(str);
+		//byte[] str = userName.getBytes("ISO-8859-1");
+		//userName=new String(str);
 		System.out.println("contact :"+userName);
 		return SUCCESS;
 	}
@@ -116,8 +116,8 @@ public class Intention extends ActionSupport {
 		Connection conn = null;
 		ResultSet rs = null;
 		Statement stmt = null;
-		byte[] str = userName.getBytes("ISO-8859-1");
-		userName=new String(str);
+		//byte[] str = userName.getBytes("ISO-8859-1");
+		//userName=new String(str);
 		System.out.println("i1:The userName is:" + userName);
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -154,10 +154,10 @@ public class Intention extends ActionSupport {
 		Connection conn = null;
 		ResultSet rs = null;
 		Statement stmt = null;
-		byte[] str = intendPlace.getBytes("ISO-8859-1");
-		intendPlace=new String(str);
-		str = userName.getBytes("ISO-8859-1");
-		userName=new String(str);
+		//byte[] str = intendPlace.getBytes("ISO-8859-1");
+		//intendPlace=new String(str);
+		//str = userName.getBytes("ISO-8859-1");
+		//userName=new String(str);
 		System.out.println("i2:The userName is:" + userName);
 		System.out.println("i2:The intendPlace is:" + intendPlace);
 		try {

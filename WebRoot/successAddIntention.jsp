@@ -1,5 +1,5 @@
-<%@ page language="java" import="java.util.*,java.sql.*"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,java.sql.*" %>
+<%@ page contentType="text/html;charset=utf-8" pageEncoding="GBK"%> 
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <body>
@@ -8,39 +8,39 @@
 	<br>
 	<table border='1' >
 		<tr>
-			<td>æƒ³åŽ»çš„æ™¯ç‚¹</td>
+			<td>ÏëÈ¥µÄ¾°µã</td>
 			<td><s:property value="intendPlace"/></td>
 		</tr>
 		<tr>
-			<td>æœŸæœ›çš„æ—¶é—´ï¼ˆæœ€æ—©ï¼‰</td>
+			<td>ÆÚÍûµÄÊ±¼ä£¨×îÔç£©</td>
 			<td><s:property value="intendTimeFloor"/></td>
 		</tr>
 		<tr>
-			<td>æœŸæœ›çš„æ—¶é—´ï¼ˆæœ€æ™šï¼‰</td>
+			<td>ÆÚÍûµÄÊ±¼ä£¨×îÍí£©</td>
 			<td><s:property value="intendTimeCeiling"/></td>
 		</tr>
 		<tr>
-			<td>æœŸæœ›çš„èŠ±è´¹</td>
+			<td>ÆÚÍûµÄ»¨·Ñ</td>
 			<td><s:property value="intendPrice"/></td>
 		</tr>
 		<tr>
-			<td>æœŸæœ›åŒä¼´çš„å¹´é¾„</td>
+			<td>ÆÚÍûÍ¬°éµÄÄêÁä</td>
 			<td><s:property value="intendFriendAge"/></td>
 		</tr>
 		<tr>
-			<td>æœŸæœ›åŒä¼´çš„æ€§åˆ«</td>
+			<td>ÆÚÍûÍ¬°éµÄÐÔ±ð</td>
 			<td><s:property value="intendFriendGender"/></td>
 		</tr>
 		<tr>
-			<td>æœŸæœ›åŒä¼´çš„å·¥ä½œ</td>
+			<td>ÆÚÍûÍ¬°éµÄ¹¤×÷</td>
 			<td><s:property value="intendFriendOccupation"/></td>
 		</tr>
 		<tr>
-			<td>æœŸæœ›åŒä¼´çš„åœ°åŸŸ</td>
+			<td>ÆÚÍûÍ¬°éµÄµØÓò</td>
 			<td><s:property value="intendFriendLocation"/></td>
 		</tr>
 		<tr>
-			<td>æœŸæœ›åŒä¼´çš„çˆ±å¥½</td>
+			<td>ÆÚÍûÍ¬°éµÄ°®ºÃ</td>
 			<td><s:property value="intendFriendHobby"/></td>
 		</tr>
 	</table>

@@ -1,4 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*"%>
+<%@ page contentType="text/html;charset=utf-8" pageEncoding="GBK"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <title>Register</title>
@@ -15,8 +16,8 @@
 		<br>
 		<s:select label="gender"
        	name="gender"
-       	headerKey="-1" headerValue="è¯·é€‰æ‹©"
-       	list="{'ç”·','å¥³','ä¸ç¡®å®š'}"
+       	headerKey="-1" headerValue="ÇëÑ¡Ôñ"
+       	list="{'ÄĞ','Å®','²»È·¶¨'}"
        	required="true"
 		 />
 		<br>

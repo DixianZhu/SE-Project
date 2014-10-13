@@ -1,5 +1,4 @@
 import java.sql.*;
-
 import com.opensymphony.xwork2.ActionSupport;
 
 public class Register extends ActionSupport {
