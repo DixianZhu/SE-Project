@@ -45,6 +45,11 @@
 		</tr>
 	</table>
 	<br> <a href="index.jsp">Exit</a>
-	
+	<a
+			href='<s:url action="linkNode">
+		<s:param name="userName" value="userName" />
+		<s:param name="intendPlace" value="intendPlace" />
+				  </s:url>'>я╟ур╤сся
+				</a>
 </body>
 </html>

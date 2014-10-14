@@ -22,6 +22,7 @@
 		<action name="addIntention" class="Intention" method="addIntention">
 			<result name="success">/successAddIntention.jsp</result>
 			<result name="error">/error.jsp</result>
+			<result name="exist">/existPlace.jsp</result>
 		</action>
 		<action name="contactUserName" class="Intention" method="contactUserName">
 			<result name="success">/addIntention.jsp</result>
@@ -33,6 +34,11 @@
 		<action name="showIntentionTwo" class="Intention" method="showIntentionTwo">
 			<result name="success">/successAddIntention.jsp</result>
 			<result name="error">/error.jsp</result>
+		</action>
+		<action name="linkNode" class="LinkNode" method="addLink">
+			<result name="success">/showTeamMates.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="noRes">/noRes.jsp</result>
 		</action>
 	</package>
 </struts>    
