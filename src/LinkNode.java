@@ -1,16 +1,20 @@
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LinkNode extends ActionSupport{
+	private static final long serialVersionUID = 1L;
+	protected static final String[][] String = null;
 	private String url = "jdbc:mysql://localhost:3306/trip";
 	private String user = "root";
 	private String psw = "2121778";
 	private String userName;
+	private String passWord;
 	private String intendPlace;
-	private String intendTimeFloor;
-	private String intendTimeCeiling;
+	private String intendTime;
 	private String intendPrice;
 	private String intendFriendAge;
 	private String intendFriendGender;
@@ -27,6 +31,13 @@ public class LinkNode extends ActionSupport{
 		return userName;
 	}
 
+	public void setPassWord(String passWord) {
+		this.passWord = passWord;
+	}
+	public String getPassWord(){
+		return passWord;
+	}
+	
 	public ArrayList<String[]> getRes() {
 		return res;
 	}
@@ -39,20 +50,12 @@ public class LinkNode extends ActionSupport{
 		return intendPlace;
 	}
 
-	public void setIntendTimeFloor(String intendTimeFloor) {
-		this.intendTimeFloor = intendTimeFloor;
+	public void setIntendTime(String intendTime) {
+		this.intendTime = intendTime;
 	}
 
-	public String getIntendTimeFloor() {
-		return intendTimeFloor;
-	}
-
-	public void setIntendTimeCeiling(String intendTimeCeiling) {
-		this.intendTimeCeiling = intendTimeCeiling;
-	}
-
-	public String getIntendTimeCeiling() {
-		return intendTimeCeiling;
+	public String getIntendTime() {
+		return intendTime;
 	}
 
 	public void setIntendPrice(String intendPrice) {
@@ -121,8 +124,7 @@ public class LinkNode extends ActionSupport{
 							+ userName + "'and i_Place = '" + intendPlace + "'");
 			if (rs.next()) {
 				intendPlace = rs.getString("i_place");
-				intendTimeFloor = rs.getString("i_time_floor");
-				intendTimeCeiling = rs.getString("i_time_ceiling");
+				intendTime = rs.getString("i_time");
 				intendPrice = rs.getString("i_price");
 				intendFriendAge = rs.getString("i_friend_age");
 				intendFriendGender = rs.getString("i_friend_gender");
@@ -134,17 +136,25 @@ public class LinkNode extends ActionSupport{
 								+ intendPlace
 								+ "' and user_name != '"
 								+ userName + "'");
+				
 				boolean flag=false;
 				while (rs.next()) {
 					flag=true;
-					String[] temp = new String[5];
+					String[] temp = new String[4];
 					temp[0] = rs.getString("user_name");
 					temp[1] = rs.getString("i_place");
-					temp[2] = rs.getString("i_time_floor");
-					temp[3] = rs.getString("i_time_ceiling");
-					temp[4] = rs.getString("i_Price");
+					temp[2] = rs.getString("i_time");
+					temp[3] = rs.getString("i_price");
 					res.add(temp);
 				}
+				Collections.sort(res, new Comparator<String[]>(){
+					@Override
+					public int compare(java.lang.String[] o1,
+							java.lang.String[] o2) {
+						// TODO Auto-generated method stub
+						return Math.abs(o1[2].compareTo(intendTime))-Math.abs(o2[2].compareTo(intendTime));
+					}
+				});
 				if(!flag){
 					return "noRes";
 				}

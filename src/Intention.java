@@ -1,12 +1,12 @@
 import java.sql.*;
 import java.util.ArrayList;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 public class Intention extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	private String intendPlace;
-	private String intendTimeFloor;
-	private String intendTimeCeiling;
+	private String intendTime;
 	private String intendPrice;
 	private String intendFriendAge;
 	private String intendFriendGender;
@@ -14,6 +14,7 @@ public class Intention extends ActionSupport {
 	private String intendFriendLocation;
 	private String intendFriendHobby;
 	private String userName;
+	private String passWord;
 	private String url = "jdbc:mysql://localhost:3306/trip";
 	private String user = "root";
 	private String psw = "2121778";
@@ -28,20 +29,12 @@ public class Intention extends ActionSupport {
 		return intendPlace;
 	}
 
-	public void setIntendTimeFloor(String intendTimeFloor) {
-		this.intendTimeFloor = intendTimeFloor;
+	public void setIntendTime(String intendTime) {
+		this.intendTime = intendTime;
 	}
 
-	public String getIntendTimeFloor() {
-		return intendTimeFloor;
-	}
-
-	public void setIntendTimeCeiling(String intendTimeCeiling) {
-		this.intendTimeCeiling = intendTimeCeiling;
-	}
-
-	public String getIntendTimeCeiling() {
-		return intendTimeCeiling;
+	public String getIntendTime() {
+		return intendTime;
 	}
 
 	public void setIntendPrice(String intendPrice) {
@@ -99,7 +92,14 @@ public class Intention extends ActionSupport {
 	public String getUserName() {
 		return userName;
 	}
-
+    
+	public void setPassWord(String passWord) {
+		this.passWord = passWord;
+	}
+	public String getPassWord(){
+		return passWord;
+	}
+	
 	public ArrayList<String[]> getRes() {
 		return res;
 	}
@@ -127,11 +127,10 @@ public class Intention extends ActionSupport {
 							+ userName + "'");
 			if (rs.next()) {
 				do {
-					String[] temp = new String[3];
+					String[] temp = new String[2];
 					temp[0] = rs.getString("i_place");
 					System.out.println(temp[0]);
-					temp[1] = rs.getString("i_time_floor");
-					temp[2] = rs.getString("i_time_ceiling");
+					temp[1] = rs.getString("i_time");
 					res.add(temp);
 				} while (rs.next());
 				return SUCCESS;
@@ -164,8 +163,7 @@ public class Intention extends ActionSupport {
 							+ userName + "'and i_Place = '" + intendPlace + "'");
 			if (rs.next()) {
 				intendPlace = rs.getString("i_place");
-				intendTimeFloor = rs.getString("i_time_floor");
-				intendTimeCeiling = rs.getString("i_time_ceiling");
+				intendTime = rs.getString("i_time");
 				intendPrice = rs.getString("i_price");
 				intendFriendAge = rs.getString("i_friend_age");
 				intendFriendGender = rs.getString("i_friend_gender");
@@ -182,7 +180,34 @@ public class Intention extends ActionSupport {
 			return ERROR;
 		}
 	}
-
+    
+	public String deleteIntention() throws Exception {
+		Connection conn = null;
+		int deleteCount = 0;
+		Statement stmt = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(url, user, psw);
+			if (!conn.isClosed())
+				System.out.println("Success connecting to the Database!");
+			else
+				System.out.println("Fail connecting to the Database!");
+			stmt = conn.createStatement();
+			deleteCount = stmt.executeUpdate("delete from intention where user_name = '"
+					+ userName + "' and i_place = '" + intendPlace + "'");
+			System.out.println(deleteCount);
+			if (deleteCount != 0) {
+				return SUCCESS;
+			} else {
+				return ERROR;
+			}
+		}catch (Exception e) {
+			System.out.print("connection error!");
+			e.printStackTrace();
+			return ERROR;
+		}
+	}
+	
 	public String addIntention() throws Exception {
 		Connection conn = null;
 		int addCount = 0;
@@ -204,15 +229,13 @@ public class Intention extends ActionSupport {
 				return "exist";
 			}
 			addCount = stmt
-					.executeUpdate("insert into intention(user_name,i_place,i_time_floor,i_time_ceiling,i_price,i_friend_gender,i_friend_age,i_friend_location,i_friend_occupation,i_friend_hobby)"
+					.executeUpdate("insert into intention(user_name,i_place,i_time,i_price,i_friend_gender,i_friend_age,i_friend_location,i_friend_occupation,i_friend_hobby)"
 							+ "values('"
 							+ userName
 							+ "','"
 							+ intendPlace
 							+ "','"
-							+ intendTimeFloor
-							+ "','"
-							+ intendTimeCeiling
+							+ intendTime
 							+ "','"
 							+ intendPrice
 							+ "','"

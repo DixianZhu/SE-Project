@@ -10,8 +10,7 @@
 	<h1>Trip Guider - Add Intention</h1>
 	<s:form action="addIntention">
 		<s:textfield name="intendPlace" label="想去的景点" />
-		<s:textfield name="intendTimeFloor" label="期望的时间（最早）" />
-		<s:textfield name="intendTimeCeiling" label="期望的时间（最晚）" />
+		<s:textfield name="intendTime" label="期望的时间(格式XXXX/XX/XX)" />
 		<s:textfield name="intendPrice" label="期望的花费(人民币)" />
 		<s:textfield name="intendFriendAge" label="期望同伴的年龄"/>
 		<s:textfield name="intendFriendGender" label="期望同伴的性别"/>
@@ -19,7 +18,22 @@
 		<s:textfield name="intendFriendLocation" label="期望同伴的地域"/>
 		<s:textfield name="intendFriendHobby" label="期望同伴的爱好" />
 		<s:hidden name="userName" label="userName"/>
+		<s:hidden name="passWord" label="passWord"/>
 		<s:submit />
 	</s:form>
+	<br>
+	<a
+		href='<s:url action="showIntentionOne">
+		<s:param name="userName" value="userName" />
+		<s:param name="passWord" value="passWord"/>
+				  </s:url>'>查看所有计划
+	</a>
+	<br>
+	<a
+		href='<s:url action="login">
+		<s:param name="userName" value="userName"/>
+		<s:param name="passWord" value="passWord"/>
+				  </s:url>'>返回主界面
+		</a>
 </body>
 </html>

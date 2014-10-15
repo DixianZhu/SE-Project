@@ -26,6 +26,9 @@ public class Login extends ActionSupport {
 	public void setPassWord(String passWord) {
 		this.passWord = passWord;
 	}
+	public String getPassWord(){
+		return passWord;
+	}
 	
 	public String getRealName(){
 		return realName;

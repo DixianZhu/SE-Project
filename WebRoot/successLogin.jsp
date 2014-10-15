@@ -38,12 +38,14 @@
 	<a
 		href='<s:url action="contactUserName">
 	    <s:param name="userName" value="userName"/>
+	    <s:param name="passWord" value="passWord"/>
 	</s:url>'>add
 		A intention</a>
 	<br>
 	<a
 		href='<s:url action="showIntentionOne">
 	    <s:param name="userName" value="userName"/>
+	    <s:param name="passWord" value="passWord"/>
 	</s:url>'>show
 		my all intentions</a>
 	<br>

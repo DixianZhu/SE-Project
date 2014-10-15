@@ -35,6 +35,10 @@
 			<result name="success">/successAddIntention.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
+		<action name="deleteIntention" class="Intention" method="deleteIntention">
+			<result name="success">/successDelete.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
 		<action name="linkNode" class="LinkNode" method="addLink">
 			<result name="success">/showTeamMates.jsp</result>
 			<result name="error">/error.jsp</result>

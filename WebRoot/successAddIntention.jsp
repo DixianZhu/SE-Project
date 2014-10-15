@@ -12,12 +12,8 @@
 			<td><s:property value="intendPlace"/></td>
 		</tr>
 		<tr>
-			<td>期望的时间（最早）</td>
-			<td><s:property value="intendTimeFloor"/></td>
-		</tr>
-		<tr>
-			<td>期望的时间（最晚）</td>
-			<td><s:property value="intendTimeCeiling"/></td>
+			<td>期望的时间</td>
+			<td><s:property value="intendTime"/></td>
 		</tr>
 		<tr>
 			<td>期望的花费</td>
@@ -45,11 +41,25 @@
 		</tr>
 	</table>
 	<br> <a href="index.jsp">Exit</a>
+	<br>
 	<a
 			href='<s:url action="linkNode">
 		<s:param name="userName" value="userName" />
 		<s:param name="intendPlace" value="intendPlace" />
 				  </s:url>'>寻找队友
 				</a>
+				<br><a
+		href='<s:url action="showIntentionOne">
+		<s:param name="userName" value="userName" />
+		<s:param name="passWord" value="passWord"/>
+				  </s:url>'>查看所有计划
+	</a>
+	<br>
+	<a
+		href='<s:url action="login">
+		<s:param name="userName" value="userName"/>
+		<s:param name="passWord" value="passWord"/>
+				  </s:url>'>返回主界面
+		</a>
 </body>
 </html>
