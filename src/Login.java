@@ -57,6 +57,9 @@ public class Login extends ActionSupport {
 	public String index() throws Exception{
 		return SUCCESS;
 	}
+	public String login(){
+		return SUCCESS;
+	}
 	
 	public String execute() throws Exception {
 		Connection conn = null;

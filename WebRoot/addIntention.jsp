@@ -13,7 +13,12 @@
 		<s:textfield name="intendTime" label="期望的时间(格式XXXX/XX/XX)" />
 		<s:textfield name="intendPrice" label="期望的花费(人民币)" />
 		<s:textfield name="intendFriendAge" label="期望同伴的年龄"/>
-		<s:textfield name="intendFriendGender" label="期望同伴的性别"/>
+		<s:select label="期望同伴的性别"
+       	name="intendFriendGender"
+       	headerKey="男" headerValue="请选择"
+       	list="{'男','女','不确定'}"
+       	required="true"
+		 />
 		<s:textfield name="intendFriendOccupation" label="期望同伴的工作"/>
 		<s:textfield name="intendFriendLocation" label="期望同伴的地域"/>
 		<s:textfield name="intendFriendHobby" label="期望同伴的爱好" />

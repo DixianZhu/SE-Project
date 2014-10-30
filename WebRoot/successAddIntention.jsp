@@ -45,6 +45,7 @@
 	<a
 			href='<s:url action="linkNode">
 		<s:param name="userName" value="userName" />
+		<s:param name="passWord" value="passWord"/>
 		<s:param name="intendPlace" value="intendPlace" />
 				  </s:url>'>я╟ур╤сся
 				</a>

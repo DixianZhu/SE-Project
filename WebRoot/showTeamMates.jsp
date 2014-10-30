@@ -13,6 +13,19 @@
 		 出发时间:<s:property value='#n[2]'/>&nbsp;&nbsp;
 		期望花费:<s:property value='#n[3]'/>&nbsp;&nbsp;&nbsp;&nbsp;
 	</s:iterator>
+	<br><a
+		href='<s:url action="showIntentionOne">
+		<s:param name="userName" value="userName" />
+		<s:param name="passWord" value="passWord"/>
+				  </s:url>'>查看所有计划
+	</a>
+	<br>
+	<a
+		href='<s:url action="login">
+		<s:param name="userName" value="userName"/>
+		<s:param name="passWord" value="passWord"/>
+				  </s:url>'>返回主界面
+		</a>
 	</body>
 </html>
 	

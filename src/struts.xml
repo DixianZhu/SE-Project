@@ -23,6 +23,7 @@
 			<result name="success">/successAddIntention.jsp</result>
 			<result name="error">/error.jsp</result>
 			<result name="exist">/existPlace.jsp</result>
+			<result name="timeinvalid">/timeInvalid.jsp</result>
 		</action>
 		<action name="contactUserName" class="Intention" method="contactUserName">
 			<result name="success">/addIntention.jsp</result>
@@ -30,6 +31,7 @@
 		<action name="showIntentionOne" class="Intention" method="showIntentionOne">
 			<result name="success">/showIntentionOne.jsp</result>
 			<result name="error">/error.jsp</result>
+			<result name="noIntention">/noIntention.jsp</result>
 		</action>
 		<action name="showIntentionTwo" class="Intention" method="showIntentionTwo">
 			<result name="success">/successAddIntention.jsp</result>

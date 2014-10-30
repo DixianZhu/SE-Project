@@ -135,7 +135,7 @@ public class Intention extends ActionSupport {
 				} while (rs.next());
 				return SUCCESS;
 			} else {
-				return ERROR;
+				return "noIntention";
 			}
 		} catch (Exception e) {
 			System.out.print("connection error!");
@@ -208,6 +208,22 @@ public class Intention extends ActionSupport {
 		}
 	}
 	
+	private boolean judgeProne(char testChar){
+		if(testChar=='\\'||testChar=='/'){
+				return true;
+		}else{
+			return false;
+		}
+	}
+	private boolean judgeTimeVaild(String checkTime){
+		boolean res=true;
+		if(!judgeProne(checkTime.charAt(4))||!judgeProne(checkTime.charAt(7))){
+			res=false;
+		}
+		
+		return res;
+	}
+	
 	public String addIntention() throws Exception {
 		Connection conn = null;
 		int addCount = 0;
@@ -227,6 +243,10 @@ public class Intention extends ActionSupport {
 							+ userName + "'and i_Place = '" + intendPlace + "'");
 			if (rs.next()) {
 				return "exist";
+			}
+			if(!judgeTimeVaild(intendTime)){
+				System.out.println(intendTime);
+				return "timeinvalid";
 			}
 			addCount = stmt
 					.executeUpdate("insert into intention(user_name,i_place,i_time,i_price,i_friend_gender,i_friend_age,i_friend_location,i_friend_occupation,i_friend_hobby)"
