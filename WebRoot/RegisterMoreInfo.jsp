@@ -16,7 +16,7 @@
 		<br>
 		<s:select label="gender"
        	name="gender"
-       	headerKey="男" headerValue="请选择"
+       	headerKey="-1" headerValue="请选择"
        	list="{'男','女','不确定'}"
        	required="true"
 		 />

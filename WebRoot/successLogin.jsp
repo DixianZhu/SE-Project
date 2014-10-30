@@ -3,33 +3,37 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <body>
-	<h1>Successful login!</h1>
-	<br>user name is
-	<s:property value="userName" />
-	Hello! These are your information:
+<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" >
+	<tr>
+	<td  align="center" valign="center">	
+	<h1>Welcome</h1>
+	<!--s:property value="userName" /-->
 	<br>
-	<table border='1'>
-		<tr>
+	 <font size="5" color="#000000">These are your information: </font>
+	</br>
+	<br>    </br>
+	<table  width="400" border='0' bgcolor="#FFF8DC" >
+		<tr align="center" valign="center">
 			<td>姓名</td>
 			<td><s:property value="realName" /></td>
 		</tr>
-		<tr>
+		<tr align="center" valign="center">
 			<td>性别</td>
 			<td><s:property value="gender" /></td>
 		</tr>
-		<tr>
+		<tr align="center" valign="center">
 			<td>年龄</td>
 			<td><s:property value="age" /></td>
 		</tr>
-		<tr>
+		<tr align="center" valign="center">
 			<td>地点</td>
 			<td><s:property value="location" /></td>
 		</tr>
-		<tr>
+		<tr align="center" valign="center">
 			<td>职业</td>
 			<td><s:property value="occupation" /></td>
 		</tr>
-		<tr>
+		<tr align="center" valign="center">
 			<td>爱好</td>
 			<td><s:property value="hobby" /></td>
 		</tr>
@@ -50,6 +54,8 @@
 		my all intentions</a>
 	<br>
 	<a href="index.jsp">Exit</a>
-
+	</td>
+	</tr>
+	</table>
 </body>
 </html>
