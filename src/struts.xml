@@ -14,11 +14,15 @@
 			<result name="error">/error.jsp</result>
 			<result name="exist">/exist.jsp</result>
 			<result name="overflow">/overflow.jsp</result>
+			<result name="usernameShort">/usernameShort.jsp</result>
 		</action>
 		<action name="register_two" class="Register" method="execute">
 			<result name="success">/successLogin.jsp</result>
 			<result name="error">/error.jsp</result>
 			<result name="overflow">/overflow.jsp</result>
+			<result name="passwordShort">/passwordShort.jsp</result>
+			<result name="noRealName">/noRealName.jsp</result>
+			<result name="exist">/exist.jsp</result>
 		</action>
 		<action name="addIntention" class="Intention" method="addIntention">
 			<result name="success">/successAddIntention.jsp</result>

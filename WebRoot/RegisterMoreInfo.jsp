@@ -10,9 +10,9 @@
 	<s:form action="register_two">
 		<s:hidden name="userName" label="user name"/>
 		<br>
-		<s:textfield name="passWord" label="pass word"/>
+		<s:textfield name="passWord" label="pass word" required="true"/>
 		<br>
-		<s:textfield name="realName" label="real name"/>
+		<s:textfield name="realName" label="real name" required="true"/>
 		<br>
 		<s:select label="gender"
        	name="gender"
