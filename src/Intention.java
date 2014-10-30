@@ -220,7 +220,6 @@ public class Intention extends ActionSupport {
 		if(!judgeProne(checkTime.charAt(4))||!judgeProne(checkTime.charAt(7))){
 			res=false;
 		}
-		
 		return res;
 	}
 	
@@ -244,7 +243,7 @@ public class Intention extends ActionSupport {
 			if (rs.next()) {
 				return "exist";
 			}
-			if(!judgeTimeVaild(intendTime)){
+			if(!judgeTimeVaild(intendTime)||intendTime.length()!=10){
 				System.out.println(intendTime);
 				return "timeinvalid";
 			}

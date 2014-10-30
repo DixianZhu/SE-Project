@@ -74,6 +74,11 @@ public class Login extends ActionSupport {
 				System.out.println("Fail connecting to the Database!");
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery("select * from member where user_name = '"
+					+ userName + "'");
+			if(!rs.next()){
+				return "noAccount";
+			}
+			rs = stmt.executeQuery("select * from member where user_name = '"
 					+ userName + "' and pass_word = '" + passWord + "'");
 			if(rs.next()){
 				realName=rs.getString("real_name");
@@ -85,7 +90,7 @@ public class Login extends ActionSupport {
 				System.out.println("login :The userName is :"+userName);
 				return SUCCESS;
 			}else{
-				return "wrong";
+				return "wrongPassword";
 			}
 		}catch (Exception e) {
 			System.out.println("connection error!");
