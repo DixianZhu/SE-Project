@@ -24,7 +24,7 @@
 		<h2>Login</h2>
 		<font size="2" color="#000000"><s:form action="login" >
 			<s:textfield name="userName" label="username" />
-			<s:textfield name="passWord" label="password" />
+			<s:password name="passWord" label="password" />
 			<s:submit />
 		</s:form>
 		</font>

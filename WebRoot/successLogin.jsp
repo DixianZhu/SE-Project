@@ -53,6 +53,13 @@
 	</s:url>'>show
 		my all intentions</a>
 	<br>
+	<a
+		href='<s:url action="showCommition">
+	    <s:param name="userName" value="userName"/>
+	    <s:param name="passWord" value="passWord"/>
+	</s:url>'>show/add
+		my commition</a>
+	<br>
 	<a href="index.jsp">Exit</a>
 	</td>
 	</tr>
