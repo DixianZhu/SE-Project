@@ -11,11 +11,28 @@ public class Commition extends ActionSupport {
 	private String userName;
 	private String realName;
 	private String passWord;
+	private String typeString;
 	private String url = "jdbc:mysql://localhost:3306/trip";
 	private String user = "root";
 	private String psw = "2121778";
+	private int num;
 	private ArrayList<String[]> res = new ArrayList<String[]>();
 
+	public void setNum(int num) {
+		this.num = num;
+	}
+
+	public int getNum() {
+		return num;
+	}
+	
+	public String getTypeString(){
+		return typeString;
+	}
+	public void setTypeString(String typeString){
+		this.typeString=typeString;
+	}
+	
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
@@ -121,10 +138,18 @@ public class Commition extends ActionSupport {
 				System.out.println("Fail connecting to the Database!");
 			stmt = conn.createStatement();
 			ResultSet rs = null;
-			rs = stmt.executeQuery("select * from member where user_name = '"
-					+ userName + "'");
+			rs = stmt
+					.executeQuery("select * from member where user_name = '"
+							+ userName + "'");
 			rs.next();
-			realName=rs.getString("real_name");
+			realName = rs.getString("real_name");
+			rs = stmt.executeQuery("select * from commition where user_name = '"
+					+ userName + "' and real_name='" + realName + "' and i_place='" + intendPlace + "' and i_time='" + intendTime + "' and commition='" + commition + "'");
+			if(rs.next()){	
+				showCommition();
+				typeString="已经存在完全相同的评论";
+				return "exist";
+			}
 			markInsert = stmt
 					.executeUpdate("insert into commition(user_name,real_name,i_place,i_time,commition)"
 							+ "values('"
@@ -134,13 +159,114 @@ public class Commition extends ActionSupport {
 							+ "','"
 							+ intendPlace
 							+ "','"
-							+ intendTime + "','" + commition + "')");
+							+ intendTime
+							+ "','"
+							+ commition + "')");
 			if (markInsert != 0) {
-				showCommition();
-				return SUCCESS;
+				System.out.println("typeString :" + typeString);
+				if(typeString.equals("moreOthersCommition")){
+					moreOthersCommition();
+					return "moreOthersCommition";
+				}
+				else{
+					showCommition();
+					typeString="成功添加评论";
+					return SUCCESS;
+				}
 			} else {
-				return "failWrite";
+				return ERROR;
 			}
+		} catch (Exception e) {
+			System.out.print("connection error!");
+			e.printStackTrace();
+			return ERROR;
+		}
+	}
+
+	public String deleteCommition() throws Exception {
+		System.out.println("num = "+num);
+		Connection conn = null;
+		Statement stmt = null;
+		int deleteCount = 0;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(url, user, psw);
+			if (!conn.isClosed())
+				System.out.println("Success connecting to the Database!");
+			else
+				System.out.println("Fail connecting to the Database!");
+			stmt = conn.createStatement();
+			deleteCount = stmt
+					.executeUpdate("delete from commition where user_name = '" + userName
+							+ "' and real_name='" + realName + "' and i_place='" + intendPlace + "' and i_time='" + intendTime + "' and commition='" + commition + "'");
+			if (deleteCount != 0) {
+				showCommition();
+				typeString="删除成功";
+				return SUCCESS;
+			}
+			return ERROR;
+		} catch (Exception e) {
+			System.out.print("connection error!");
+			e.printStackTrace();
+			return ERROR;
+		}
+	}
+	public String showOthersCommition() throws Exception {
+		Connection conn = null;
+		ResultSet rs = null;
+		Statement stmt = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(url, user, psw);
+			if (!conn.isClosed())
+				System.out.println("Success connecting to the Database!");
+			else
+				System.out.println("Fail connecting to the Database!");
+			stmt = conn.createStatement();
+			rs = stmt
+					.executeQuery("select distinct i_place from commition");
+			if (rs.next()) {
+				do {
+					String []temp = new String[1];
+					temp[0]=rs.getString("i_place");
+					res.add(temp);
+				} while (rs.next());
+			}
+			return SUCCESS;
+		} catch (Exception e) {
+			System.out.print("connection error!");
+			e.printStackTrace();
+			return ERROR;
+		}
+	}
+	public String moreOthersCommition() throws Exception {
+		Connection conn = null;
+		ResultSet rs = null;
+		Statement stmt = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(url, user, psw);
+			if (!conn.isClosed())
+				System.out.println("Success connecting to the Database!");
+			else
+				System.out.println("Fail connecting to the Database!");
+			stmt = conn.createStatement();
+			rs = stmt
+					.executeQuery("select * from commition where i_place = '"
+							+ intendPlace + "'");
+			if (rs.next()) {
+				do {
+					String[] temp = new String[4];
+					temp[0] = rs.getString("real_name");
+					temp[1] = rs.getString("i_place");
+					System.out.println(temp[0]);
+					temp[2] = rs.getString("i_time");
+					temp[3] = rs.getString("commition");
+					res.add(temp);
+				} while (rs.next());
+			}
+			typeString="moreOthersCommition";
+			return SUCCESS;
 		} catch (Exception e) {
 			System.out.print("connection error!");
 			e.printStackTrace();

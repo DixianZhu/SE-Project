@@ -57,8 +57,13 @@
 		href='<s:url action="showCommition">
 	    <s:param name="userName" value="userName"/>
 	    <s:param name="passWord" value="passWord"/>
-	</s:url>'>show/add
-		my commition</a>
+	</s:url>'>增删我的评论</a>
+	<br>
+	<a
+		href='<s:url action="showOthersCommition">
+	    <s:param name="userName" value="userName"/>
+	    <s:param name="passWord" value="passWord"/>
+	</s:url>'>查看景点评论</a>
 	<br>
 	<a href="index.jsp">Exit</a>
 	</td>

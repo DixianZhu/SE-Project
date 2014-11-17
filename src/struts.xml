@@ -52,10 +52,24 @@
 			<result name="noRes">/noRes.jsp</result>
 		</action>
 		<action name="showCommition" class="Commition" method="showCommition">
-			<result name="success">/showCommitionOne.jsp</result>
+			<result name="success">/successAddCommition.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
 		<action name="addCommition" class="Commition" method="addCommition">
+			<result name="success">/successAddCommition.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="exist">/successAddCommition.jsp</result>
+			<result name="moreOthersCommition">/moreOthersCommition.jsp</result>
+		</action>
+		<action name="showOthersCommition" class="Commition" method="showOthersCommition">
+			<result name="success">/showOthersCommition.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="moreOthersCommition" class="Commition" method="moreOthersCommition">
+			<result name="success">/moreOthersCommition.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="deleteCommition" class="Commition" method="deleteCommition">
 			<result name="success">/successAddCommition.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
