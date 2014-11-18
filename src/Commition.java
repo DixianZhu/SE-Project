@@ -164,7 +164,7 @@ public class Commition extends ActionSupport {
 							+ commition + "')");
 			if (markInsert != 0) {
 				System.out.println("typeString :" + typeString);
-				if(typeString.equals("moreOthersCommition")){
+				if(typeString!=null && typeString.equals("moreOthersCommition")){
 					moreOthersCommition();
 					return "moreOthersCommition";
 				}

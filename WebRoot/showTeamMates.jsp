@@ -3,15 +3,24 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <body>
-	<h1>Successful login!</h1>
-	your team mates:
+	<h1><s:property value="typeString"/></h1>
+	
 	<br>
 	<s:iterator value="res" status="itStatus" id='n'>
 		<li><s:property value="#itStatus.count" />:
 		 队友用户名:<s:property value='#n[0]'/>&nbsp;&nbsp;
 		 目的地:<s:property value='#n[1]'/>&nbsp;&nbsp;
 		 出发时间:<s:property value='#n[2]'/>&nbsp;&nbsp;
-		期望花费:<s:property value='#n[3]'/>&nbsp;&nbsp;&nbsp;&nbsp;
+		期望花费:<s:property value='#n[3]'/>&nbsp;&nbsp;
+		队伍:<s:property value='#n[4]'/>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a
+		href='<s:url action="addTeam">
+		<s:param name="teamName" value="#n[0]" />
+		<s:param name="intendPlace" value="intendPlace" />
+		<s:param name="userName" value="userName" />
+		<s:param name="passWord" value="passWord"/>
+				  </s:url>'>组队
+		</a>
 	</s:iterator>
 	<br><a
 		href='<s:url action="showIntentionOne">

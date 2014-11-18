@@ -73,5 +73,9 @@
 			<result name="success">/successAddCommition.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
+		<action name="addTeam" class="LinkNode" method="addTeam">
+			<result name="success">/showTeamMates.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
 	</package>
 </struts>    
