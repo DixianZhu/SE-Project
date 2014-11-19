@@ -23,6 +23,13 @@
 		</a>
 	</s:iterator>
 	<br><a
+		href='<s:url action="showIntentionTwo">
+		<s:param name="userName" value="userName" />
+		<s:param name="passWord" value="passWord"/>
+		<s:param name="intendPlace" value="intendPlace"/>
+				  </s:url>'>∑µªÿ…œ“ª“≥
+	</a>
+	<br><a
 		href='<s:url action="showIntentionOne">
 		<s:param name="userName" value="userName" />
 		<s:param name="passWord" value="passWord"/>

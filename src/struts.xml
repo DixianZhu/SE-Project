@@ -75,6 +75,15 @@
 		</action>
 		<action name="addTeam" class="LinkNode" method="addTeam">
 			<result name="success">/showTeamMates.jsp</result>
+			<result name="existTeam">/showTeamMates.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="showTeam" class="LinkNode" method="showTeam">
+			<result name="success">/showTeamMates.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="quitTeam" class="LinkNode" method="quitTeam">
+			<result name="success">/successAddIntention.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
 	</package>

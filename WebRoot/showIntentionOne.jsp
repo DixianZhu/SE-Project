@@ -31,6 +31,12 @@
 	<a href="index.jsp">exit</a>
 	<br>
 	<a
+		href='<s:url action="contactUserName">
+	    <s:param name="userName" value="userName"/>
+	    <s:param name="passWord" value="passWord"/>
+	</s:url>'>添加一个新旅游意向</a>
+		<br>
+	<a
 		href='<s:url action="login">
 		<s:param name="userName" value="userName"/>
 		<s:param name="passWord" value="passWord"/>

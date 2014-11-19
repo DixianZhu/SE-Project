@@ -13,14 +13,29 @@ public class Intention extends ActionSupport {
 	private String intendFriendOccupation;
 	private String intendFriendLocation;
 	private String intendFriendHobby;
+	private String teamName;
 	private String userName;
 	private String passWord;
 	private String url = "jdbc:mysql://localhost:3306/trip";
 	private String user = "root";
 	private String psw = "2121778";
+	private String typeString;
 	private ArrayList<String[]> res = new ArrayList<String[]>();
 	
 
+	public String getTypeString(){
+		return typeString;
+	}
+	public void setTypeString(String typeString){
+		this.typeString=typeString;
+	}
+	public void setTeamName(String teamName){
+		this.teamName=teamName;
+	}
+	public String getTeamName(){
+		return teamName;
+	}
+	
 	public void setIntendPlace(String intendPlace) {
 		this.intendPlace = intendPlace;
 	}
@@ -170,6 +185,8 @@ public class Intention extends ActionSupport {
 				intendFriendLocation = rs.getString("i_friend_location");
 				intendFriendOccupation = rs.getString("i_friend_occupation");
 				intendFriendHobby = rs.getString("i_friend_hobby");
+				teamName=rs.getString("team_username");
+				typeString="查看旅游意向";
 				return SUCCESS;
 			} else {
 				return ERROR;
@@ -267,8 +284,10 @@ public class Intention extends ActionSupport {
 							+ intendFriendOccupation
 							+ "','"
 							+ intendFriendHobby + "')");
-			if (addCount == 1)
+			if (addCount == 1){
+				typeString="成功添加旅游意向";
 				return SUCCESS;
+			}
 			else
 				return ERROR;
 		} catch (Exception e) {

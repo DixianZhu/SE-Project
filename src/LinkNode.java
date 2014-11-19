@@ -150,6 +150,7 @@ public class LinkNode extends ActionSupport {
 				intendFriendLocation = rs.getString("i_friend_location");
 				intendFriendOccupation = rs.getString("i_friend_occupation");
 				intendFriendHobby = rs.getString("i_friend_hobby");
+				teamName=rs.getString("team_username");
 				rs = stmt
 						.executeQuery("select * from intention where i_Place = '"
 								+ intendPlace
@@ -216,7 +217,11 @@ public class LinkNode extends ActionSupport {
 				temp[4] = rs.getString("team_username");
 				res.add(temp);
 			}
-			typeString="队伍成员";
+			if(teamName==null){
+				typeString="暂无队伍";
+			}else{
+				typeString="队伍成员";
+			}
 			return SUCCESS;
 		} catch (Exception e) {
 			System.out.print("connection error!");
@@ -224,7 +229,35 @@ public class LinkNode extends ActionSupport {
 			return ERROR;
 		}
 	}
-
+	public String quitTeam(){
+		Connection conn = null;
+		Statement stmt = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(url, user, psw);
+			if (!conn.isClosed())
+				System.out.println("Success connecting to the Database!");
+			else
+				System.out.println("Fail connecting to the Database!");
+			stmt = conn.createStatement();
+			int deleteCount=0;
+			deleteCount=stmt
+				.executeUpdate("update intention set team_username = null where user_name = '"
+							+ userName + "' and i_place='" + intendPlace + "'");
+			System.out.println(deleteCount);
+			if (deleteCount==1) {
+				typeString="退出队伍成功";
+				teamName=null;
+				return SUCCESS;
+			} else {
+				return ERROR;
+			}
+		} catch (Exception e) {
+			System.out.print("connection error!");
+			e.printStackTrace();
+			return ERROR;
+		}
+	}
 	public String addTeam() {
 		Connection conn = null;
 		ResultSet rs = null;
@@ -237,6 +270,18 @@ public class LinkNode extends ActionSupport {
 			else
 				System.out.println("Fail connecting to the Database!");
 			stmt = conn.createStatement();
+			rs = stmt
+					.executeQuery("select * from intention where user_name = '"
+							+ userName + "'and i_Place = '" + intendPlace + "'");
+			if(rs.next()){
+				String temp=rs.getString("team_username");
+				if(temp!=null){
+					teamName=temp;
+					showTeam();
+					typeString="已存在队伍！请先退出队伍再加入新队伍";
+					return "existTeam";
+				}
+			}
 			rs = stmt
 					.executeQuery("select * from intention where user_name = '"
 							+ teamName + "'and i_Place = '" + intendPlace + "'");

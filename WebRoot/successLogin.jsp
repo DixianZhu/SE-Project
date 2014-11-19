@@ -43,15 +43,13 @@
 		href='<s:url action="contactUserName">
 	    <s:param name="userName" value="userName"/>
 	    <s:param name="passWord" value="passWord"/>
-	</s:url>'>add
-		A intention</a>
+	</s:url>'>添加一个新旅游意向</a>
 	<br>
 	<a
 		href='<s:url action="showIntentionOne">
 	    <s:param name="userName" value="userName"/>
 	    <s:param name="passWord" value="passWord"/>
-	</s:url>'>show
-		my all intentions</a>
+	</s:url>'>查看我的旅游意向及组队情况</a>
 	<br>
 	<a
 		href='<s:url action="showCommition">
