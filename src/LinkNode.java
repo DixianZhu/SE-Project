@@ -23,17 +23,17 @@ public class LinkNode extends ActionSupport {
 	private String intendFriendHobby;
 	private String typeString;
 	private String teamName;
-	
+
 	private ArrayList<String[]> res = new ArrayList<String[]>();
 
-	
-	public String getTypeString(){
+	public String getTypeString() {
 		return typeString;
 	}
-	public void setTypeString(String typeString){
-		this.typeString=typeString;
+
+	public void setTypeString(String typeString) {
+		this.typeString = typeString;
 	}
-	
+
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
@@ -150,7 +150,7 @@ public class LinkNode extends ActionSupport {
 				intendFriendLocation = rs.getString("i_friend_location");
 				intendFriendOccupation = rs.getString("i_friend_occupation");
 				intendFriendHobby = rs.getString("i_friend_hobby");
-				teamName=rs.getString("team_username");
+				teamName = rs.getString("team_username");
 				rs = stmt
 						.executeQuery("select * from intention where i_Place = '"
 								+ intendPlace
@@ -180,7 +180,7 @@ public class LinkNode extends ActionSupport {
 				if (!flag) {
 					return "noRes";
 				}
-				typeString="匹配结果";
+				typeString = "匹配结果";
 				return SUCCESS;
 			} else {
 				return ERROR;
@@ -217,10 +217,10 @@ public class LinkNode extends ActionSupport {
 				temp[4] = rs.getString("team_username");
 				res.add(temp);
 			}
-			if(teamName==null){
-				typeString="暂无队伍";
-			}else{
-				typeString="队伍成员";
+			if (teamName == null) {
+				typeString = "暂无队伍";
+			} else {
+				typeString = "队伍成员";
 			}
 			return SUCCESS;
 		} catch (Exception e) {
@@ -229,9 +229,11 @@ public class LinkNode extends ActionSupport {
 			return ERROR;
 		}
 	}
-	public String quitTeam(){
+
+	public String quitTeam() {
 		Connection conn = null;
 		Statement stmt = null;
+		ResultSet rs = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(url, user, psw);
@@ -240,14 +242,39 @@ public class LinkNode extends ActionSupport {
 			else
 				System.out.println("Fail connecting to the Database!");
 			stmt = conn.createStatement();
-			int deleteCount=0;
-			deleteCount=stmt
-				.executeUpdate("update intention set team_username = null where user_name = '"
+			int deleteCount = 0;
+			if (teamName.equals(userName)) {// 当退出者就是队长时,副队长成为队长
+				System.out.println("mark");
+				rs = stmt
+						.executeQuery("select * from intention where team_username = '"
+								+ teamName
+								+ "'and i_Place = '"
+								+ intendPlace
+								+ "'and user_name != '" + userName + "'");// 找出队友信息
+				String tempTeam=null;
+				rs.last();
+				int Row=rs.getRow();
+				rs.beforeFirst();
+				String []users=new String[Row];
+				for (int i=0;rs.next();i++) {
+					users[i] = rs.getString("user_name");
+				}
+				tempTeam=users[0];
+				for (int i=0;i<Row;i++){
+					stmt
+					.executeUpdate("update intention set team_username = '" + tempTeam + "' where user_name = '"
+							+ users[i] + "' and i_place='" + intendPlace + "'");
+				}
+			}else{
+				System.out.println("Debug ....");
+			}
+			deleteCount = stmt
+					.executeUpdate("update intention set team_username = null where user_name = '"
 							+ userName + "' and i_place='" + intendPlace + "'");
 			System.out.println(deleteCount);
-			if (deleteCount==1) {
-				typeString="退出队伍成功";
-				teamName=null;
+			if (deleteCount == 1) {
+				typeString = "退出队伍成功";
+				teamName = null;
 				return SUCCESS;
 			} else {
 				return ERROR;
@@ -258,6 +285,7 @@ public class LinkNode extends ActionSupport {
 			return ERROR;
 		}
 	}
+
 	public String addTeam() {
 		Connection conn = null;
 		ResultSet rs = null;
@@ -273,29 +301,30 @@ public class LinkNode extends ActionSupport {
 			rs = stmt
 					.executeQuery("select * from intention where user_name = '"
 							+ userName + "'and i_Place = '" + intendPlace + "'");
-			if(rs.next()){
-				String temp=rs.getString("team_username");
-				if(temp!=null){
-					teamName=temp;
+			if (rs.next()) {
+				String temp = rs.getString("team_username");
+				if (temp != null) {
+					teamName = temp;
 					showTeam();
-					typeString="已存在队伍！请先退出队伍再加入新队伍";
+					typeString = "已存在队伍！请先退出队伍再加入新队伍";
 					return "existTeam";
 				}
 			}
 			rs = stmt
 					.executeQuery("select * from intention where user_name = '"
-							+ teamName + "'and i_Place = '" + intendPlace + "'");
+							+ teamName + "'and i_Place = '" + intendPlace + "'");// 找出队友信息
 			if (rs.next()) {
 				String temp = rs.getString("team_username");
-				if (temp == null) {
+				if (temp == null) {// 队友尚未组队
 					stmt.executeUpdate("update intention set team_username = '"
 							+ teamName + "' where user_name = '" + teamName
-							+ "'");
-				} else {
-					teamName=temp;
+							+ "' and i_place = '" + intendPlace + "'");
+				} else {// 队友已有队伍
+					teamName = temp;
 				}
 				stmt.executeUpdate("update intention set team_username = '"
-						+ teamName + "' where user_name = '" + userName + "'");
+						+ teamName + "' where user_name = '" + userName
+						+ "' and i_place = '" + intendPlace + "'");
 				showTeam();
 				return SUCCESS;
 			} else {
