@@ -20,9 +20,51 @@ public class Intention extends ActionSupport {
 	private String user = "root";
 	private String psw = "2121778";
 	private String typeString;
+	private String apply1;
+	private String apply2;
+	private String apply3;
+	private String invite1;
+	private String invite2;
+	private String invite3;
+	public String getApply1(){
+		return apply1;
+	}
+	public String getApply2(){
+		return apply2;
+	}
+	public String getApply3(){
+		return apply3;
+	}
+	public void setApply1(String apply1){
+		this.apply1=apply1;
+	}
+	public void setApply2(String apply2){
+		this.apply2=apply2;
+	}
+	public void setApply3(String apply3){
+		this.apply3=apply3;
+	}
+	public String getInvite1(){
+		return invite1;
+	}
+	public String getInvite2(){
+		return invite2;
+	}
+	public String getInvite3(){
+		return invite3;
+	}
+	public void setInvite1(String invite1){
+		this.invite1=invite1;
+	}
+	public void setInvite2(String invite2){
+		this.invite2=invite2;
+	}
+	public void setInvite3(String invite3){
+		this.invite3=invite3;
+	}
 	private ArrayList<String[]> res = new ArrayList<String[]>();
-	
-
+	private ArrayList<String[]> applySet = new ArrayList<String[]>();
+	private ArrayList<String[]> inviteSet = new ArrayList<String[]>();
 	public String getTypeString(){
 		return typeString;
 	}
@@ -118,6 +160,12 @@ public class Intention extends ActionSupport {
 	public ArrayList<String[]> getRes() {
 		return res;
 	}
+	public ArrayList<String[]> getApplySet() {
+		return applySet;
+	}
+	public ArrayList<String[]> getInviteSet() {
+		return inviteSet;
+	}
 
 	public String contactUserName() throws Exception {
 		System.out.println("contact :"+userName);
@@ -186,6 +234,30 @@ public class Intention extends ActionSupport {
 				intendFriendOccupation = rs.getString("i_friend_occupation");
 				intendFriendHobby = rs.getString("i_friend_hobby");
 				teamName=rs.getString("team_username");
+				apply1 = rs.getString("apply1");
+				apply2 = rs.getString("apply2");
+				apply3 = rs.getString("apply3");
+				invite1= rs.getString("invite1");
+				invite2= rs.getString("invite2");
+				invite3= rs.getString("invite3");
+				rs = stmt
+						.executeQuery("select * from intention where (apply1 = '"
+								+ userName + "' or apply2 = '" + userName + "' or apply3 = '" + userName + "') and i_Place = '" + intendPlace + "'");
+				while(rs.next()){
+					String []temp = new String[2];
+					temp[0]=rs.getString("user_name");
+					temp[1]=rs.getString("i_time");
+					applySet.add(temp);
+				}
+				rs = stmt
+						.executeQuery("select * from intention where (invite1 = '"
+								+ userName + "' or invite2 = '" + userName + "' or invite3 = '" + userName + "') and i_Place = '" + intendPlace + "'");
+				while(rs.next()){
+					String []temp = new String[2];
+					temp[0]=rs.getString("user_name");
+					temp[1]=rs.getString("i_time");
+					inviteSet.add(temp);
+				}
 				typeString="查看旅游意向";
 				return SUCCESS;
 			} else {

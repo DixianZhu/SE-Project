@@ -44,6 +44,66 @@
 			<td><s:property value="teamName"/></td>
 		</tr>
 	</table>
+	<table border='1' >
+		<tr>
+			<td>我的申请1</td>
+			<td><s:property value="apply1"/></td>
+		</tr>
+		<tr>
+			<td>我的申请2</td>
+			<td><s:property value="apply2"/></td>
+		</tr>
+		<tr>
+			<td>我的申请3</td>
+			<td><s:property value="apply3"/></td>
+		</tr>
+	</table>
+	<table border='1' >
+		<tr>
+			<td>我的邀请1</td>
+			<td><s:property value="invite1"/></td>
+		</tr>
+		<tr>
+			<td>我的邀请2</td>
+			<td><s:property value="invite2"/></td>
+		</tr>
+		<tr>
+			<td>我的邀请3</td>
+			<td><s:property value="invite3"/></td>
+		</tr>
+	</table>
+	入队申请：
+	<s:iterator value="applySet" status="itStatus" id="n">
+		<li><s:property value="#itStatus.count" />:
+		 申请用户:<s:property value="#n[0]" />&nbsp;&nbsp;
+		期望出发时间:<s:property value="#n[1]" />&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href='<s:url action="admitTeam">
+		<s:param name="teamName" value="userName" />
+		<s:param name="userName" value="#n[0]" />
+		<s:param name="passWord" value="passWord"/>
+		<s:param name="intendPlace" value="intendPlace"/>
+		<s:param name="addTeamFlag" value="'Yes'"/>
+				  </s:url>'>同意申请 
+		</a>
+	</li></s:iterator>
+	<br>
+	<br>
+	入队邀请：
+	<s:iterator value="inviteSet" status="itStatus" id="n">
+		<li><s:property value="#itStatus.count" />:
+		 申请用户:<s:property value="#n[0]" />&nbsp;&nbsp;
+		期望出发时间:<s:property value="#n[1]" />&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href='<s:url action="admitTeam">
+		<s:param name="teamName" value="#n[0]"/>
+		<s:param name="userName" value="userName" />
+		<s:param name="passWord" value="passWord"/>
+		<s:param name="intendPlace" value="intendPlace"/>
+		<s:param name="addTeamFlag" value="'No'"/>
+				  </s:url>'>同意邀请 
+		</a>
+	</li></s:iterator>
 	<br>
 	<a
 			href='<s:url action="linkNode">
@@ -74,6 +134,14 @@
 		<s:param name="intendFriendLocation" value="intendFriendLocation"/>
 		<s:param name="intendFriendHobby" value="intendFriendHobby"/>
 		<s:param name="teamName" value="teamName"/>
+		<s:param name="apply1" value="apply1"/>
+		<s:param name="apply2" value="apply2"/>
+		<s:param name="apply3" value="apply3"/>
+		<s:param name="invite1" value="invite1"/>
+		<s:param name="invite2" value="invite2"/>
+		<s:param name="invite3" value="invite3"/>
+		<s:param name="applySet" value="applySet"/>
+		<s:param name="inviteSet" value="inviteSet"/>
 				  </s:url>'>退出队伍
 	</a>
 				<br><a
@@ -89,6 +157,5 @@
 		<s:param name="passWord" value="passWord"/>
 				  </s:url>'>返回主界面
 		</a>
-	<br> <a href="index.jsp">Exit</a>
 </body>
 </html>

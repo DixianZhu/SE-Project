@@ -15,9 +15,11 @@ import org.apache.lucene.queryParser.QueryParser;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
+import org.apache.lucene.search.Scorer;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
+import org.apache.lucene.search.highlight.Fragmenter;
 import org.apache.lucene.search.highlight.SimpleHTMLFormatter;
 import org.apache.lucene.search.highlight.Highlighter;
 import org.apache.lucene.search.highlight.SimpleFragmenter;
@@ -27,6 +29,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Formatter;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -75,6 +78,11 @@ public class mySearch extends ActionSupport{
 		ScoreDoc[] hits = results.scoreDocs;
 		int numTotalHits = results.totalHits;
 		System.out.println(numTotalHits + " total matching documents");
+		//SimpleHTMLFormatter formatter = new SimpleHTMLFormatter("<font color='red'>","</font>");
+        //QueryScorer fragmentScore = new QueryScorer(query);
+        //Highlighter highlighter = new Highlighter(formatter,fragmentScore);
+        //Fragmenter fragmenter = new SimpleFragmenter(100);
+        //highlighter.setTextFragmenter(fragmenter);
 		for (int i = 0; i < hits.length; i++) {
 			Document doc = searcher.doc(hits[i].doc);
 			String []temp = new String[3];
@@ -84,6 +92,8 @@ public class mySearch extends ActionSupport{
 			if (path != null) {
 				System.out.println((i + 1) + ". " + path);
 				String title = doc.get("title");
+				//String highlighterTitle = highlighter.getBestFragment(analyzer, "title", title);
+				//String highlighterContent = highlighter.getBestFragment(analyzer, "content", content);
 				temp[1]=title;
 				temp[2]=content;
 				res.add(temp);
