@@ -30,10 +30,26 @@ public class LinkNode extends ActionSupport {
 	private String invite2;
 	private String invite3;
 	private String addTeamFlag;
+	private int clearFlag;
+	private String clearType;
 	private ArrayList<String[]> applySet = new ArrayList<String[]>();
 	private ArrayList<String[]> inviteSet = new ArrayList<String[]>();
 	private ArrayList<String[]> res = new ArrayList<String[]>();
 
+	public void setClearFlag(String clearFlag) {
+		this.clearFlag = Integer.parseInt(clearFlag);
+	}
+
+	public int getClearFlag() {
+		return clearFlag;
+	}
+
+	public void setClearType(String clearType){
+		this.clearType=clearType;
+	}
+	public String getClearType(){
+		return clearType;
+	}
 	public ArrayList<String[]> getApplySet() {
 		return applySet;
 	}
@@ -259,15 +275,18 @@ public class LinkNode extends ActionSupport {
 						if (apply1 != null && apply2 != null && apply3 != null) {
 							temp[5] = "申请次数达到三次";
 						}
-						String tempTeamName=temp[4]==null?temp[0]:temp[4];
+						String tempTeamName = temp[4] == null ? temp[0]
+								: temp[4];
 						if (apply1 != null && apply1.equals(tempTeamName)) {// 如果已经申请过，则不可再申请
 							temp[5] = "已发送申请";
-						} else if (apply2 != null && apply2.equals(tempTeamName)) {
+						} else if (apply2 != null
+								&& apply2.equals(tempTeamName)) {
 							temp[5] = "已发送申请";
-						} else if (apply3 != null && apply3.equals(tempTeamName)) {
+						} else if (apply3 != null
+								&& apply3.equals(tempTeamName)) {
 							temp[5] = "已发送申请";
 						}
-						
+
 					}
 					if (temp[4] == null) {
 						if ((invite1 == null || invite1 != null
@@ -372,7 +391,7 @@ public class LinkNode extends ActionSupport {
 							+ "'and user_name != '" + userName + "'");// 找出队友信息
 			rs.last();
 			int Row = rs.getRow();
-			if (teamName.equals(userName)&&Row>=1) {// 当退出者就是队长时,副队长成为队长
+			if (teamName.equals(userName) && Row >= 1) {// 当退出者就是队长时,副队长成为队长
 				System.out.println("mark");
 				String tempTeam = null;
 				rs.beforeFirst();
@@ -595,6 +614,28 @@ public class LinkNode extends ActionSupport {
 			} else {
 				return ERROR;
 			}
+		} catch (Exception e) {
+			System.out.print("connection error!");
+			e.printStackTrace();
+			return ERROR;
+		}
+	}
+
+	public String clear() {
+		Connection conn = null;
+		Statement stmt = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(url, user, psw);
+			if (!conn.isClosed())
+				System.out.println("Success connecting to the Database!");
+			else
+				System.out.println("Fail connecting to the Database!");
+			stmt = conn.createStatement();
+				stmt.executeUpdate("update intention set "+clearType+""+clearFlag+" = null where user_name = '" + userName
+						+ "' and i_place = '" + intendPlace + "'");
+			addLink();
+			return SUCCESS;
 		} catch (Exception e) {
 			System.out.print("connection error!");
 			e.printStackTrace();

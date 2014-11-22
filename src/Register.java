@@ -124,6 +124,9 @@ public class Register extends ActionSupport {
 				|| occupation.length() > 20 || hobby.length() > 50) {
 			return "overflow";
 		}
+		if(!try_user_name().equals(SUCCESS)){
+			return try_user_name();
+		}
 		if (passWord.length() < 7) {
 			return "passwordShort";
 		}

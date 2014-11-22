@@ -3,10 +3,19 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <body>
+<link rel="stylesheet" href="bootstrap.css" type="text/css">
+<meta charset="utf-8">
+	<table align="center" valign="center" width="100%"  border="0" cellpadding="0">
+	<tr>
+	<td align="center" valign="center">
+	<br/><br/><br/><br/>
 	<h1><s:property value="typeString"/></h1>
-	Hello! These are your intention information:
-	<br>
-	<table border='1' >
+	<br/>
+	<br/>
+	<br/>
+	<font size="5" color="#000000">Hello! These are your intention information:</font>
+	<br/><br/>
+	<table border='0' >
 		<tr>
 			<td>想去的景点</td>
 			<td><s:property value="intendPlace"/></td>
@@ -44,32 +53,80 @@
 			<td><s:property value="teamName"/></td>
 		</tr>
 	</table>
-	<table border='1' >
+	<table border='0' >
 		<tr>
 			<td>我的申请1</td>
 			<td><s:property value="apply1"/></td>
+			<td><a href='<s:url action="clear">
+		<s:param name="userName" value="userName" />
+		<s:param name="passWord" value="passWord"/>
+		<s:param name="intendPlace" value="intendPlace"/>
+		<s:param name="clearType" value="'apply'"/>
+		<s:param name="clearFlag" value="'1'"/>
+				  </s:url>'>撤销
+		</a></td>
 		</tr>
 		<tr>
 			<td>我的申请2</td>
 			<td><s:property value="apply2"/></td>
+			<td><a href='<s:url action="clear">
+		<s:param name="userName" value="userName" />
+		<s:param name="passWord" value="passWord"/>
+		<s:param name="intendPlace" value="intendPlace"/>
+		<s:param name="clearType" value="'apply'"/>
+		<s:param name="clearFlag" value="'2'"/>
+				  </s:url>'>撤销
+		</a></td>
 		</tr>
 		<tr>
 			<td>我的申请3</td>
 			<td><s:property value="apply3"/></td>
+			<td><a href='<s:url action="clear">
+		<s:param name="userName" value="userName" />
+		<s:param name="passWord" value="passWord"/>
+		<s:param name="intendPlace" value="intendPlace"/>
+		<s:param name="clearType" value="'apply'"/>
+		<s:param name="clearFlag" value="'3'"/>
+				  </s:url>'>撤销
+		</a></td>
 		</tr>
 	</table>
-	<table border='1' >
+	<table border='0' >
 		<tr>
 			<td>我的邀请1</td>
 			<td><s:property value="invite1"/></td>
+			<td><a href='<s:url action="clear">
+		<s:param name="userName" value="userName" />
+		<s:param name="passWord" value="passWord"/>
+		<s:param name="intendPlace" value="intendPlace"/>
+		<s:param name="clearType" value="'invite'"/>
+		<s:param name="clearFlag" value="'1'"/>
+				  </s:url>'>撤销
+		</a></td>
 		</tr>
 		<tr>
 			<td>我的邀请2</td>
 			<td><s:property value="invite2"/></td>
+			<td><a href='<s:url action="clear">
+		<s:param name="userName" value="userName" />
+		<s:param name="passWord" value="passWord"/>
+		<s:param name="intendPlace" value="intendPlace"/>
+		<s:param name="clearType" value="'invite'"/>
+		<s:param name="clearFlag" value="'2'"/>
+				  </s:url>'>撤销
+		</a></td>
 		</tr>
 		<tr>
 			<td>我的邀请3</td>
 			<td><s:property value="invite3"/></td>
+			<td><a href='<s:url action="clear">
+		<s:param name="userName" value="userName" />
+		<s:param name="passWord" value="passWord"/>
+		<s:param name="intendPlace" value="intendPlace"/>
+		<s:param name="clearType" value="'invite'"/>
+		<s:param name="clearFlag" value="'3'"/>
+				  </s:url>'>撤销
+		</a></td>
 		</tr>
 	</table>
 	入队申请：
@@ -157,5 +214,6 @@
 		<s:param name="passWord" value="passWord"/>
 				  </s:url>'>返回主界面
 		</a>
+		</td></tr></table>
 </body>
 </html>

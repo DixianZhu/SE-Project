@@ -297,20 +297,6 @@ public class Intention extends ActionSupport {
 		}
 	}
 	
-	private boolean judgeProne(char testChar){
-		if(testChar=='\\'||testChar=='/'){
-				return true;
-		}else{
-			return false;
-		}
-	}
-	private boolean judgeTimeVaild(String checkTime){
-		boolean res=true;
-		if(!judgeProne(checkTime.charAt(4))||!judgeProne(checkTime.charAt(7))){
-			res=false;
-		}
-		return res;
-	}
 	
 	public String addIntention() throws Exception {
 		Connection conn = null;
@@ -332,10 +318,7 @@ public class Intention extends ActionSupport {
 			if (rs.next()) {
 				return "exist";
 			}
-			if(!judgeTimeVaild(intendTime)||intendTime.length()!=10){
-				System.out.println(intendTime);
-				return "timeinvalid";
-			}
+		
 			addCount = stmt
 					.executeUpdate("insert into intention(user_name,i_place,i_time,i_price,i_friend_gender,i_friend_age,i_friend_location,i_friend_occupation,i_friend_hobby)"
 							+ "values('"

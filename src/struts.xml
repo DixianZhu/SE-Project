@@ -22,6 +22,7 @@
 			<result name="overflow">/overflow.jsp</result>
 			<result name="passwordShort">/passwordShort.jsp</result>
 			<result name="noRealName">/noRealName.jsp</result>
+			<result name="usernameShort">/usernameShort.jsp</result>
 			<result name="exist">/exist.jsp</result>
 		</action>
 		<action name="addIntention" class="Intention" method="addIntention">
@@ -98,6 +99,9 @@
 			<result name="success">/showTeamMates.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
-		
+		<action name="clear" class="LinkNode" method="clear">
+			<result name="success">/showTeamMates.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
 	</package>
 </struts>    

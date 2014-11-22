@@ -2,6 +2,8 @@
 <%@ page contentType="text/html;charset=utf-8" pageEncoding="GBK"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
+<link rel="stylesheet" href="bootstrap.css" type="text/css">
+<meta charset="utf-8">
 <body bgcolor="#FFF8DC">
 	<table width="100%" height="100%" border="0" cellspacing="0"
 		cellpadding="0">
@@ -14,6 +16,7 @@
 						出发时间:<s:property value='#n[2]' />&nbsp;&nbsp; 评论:<s:property
 							value='#n[3]' />&nbsp;&nbsp;&nbsp;&nbsp; 
 				</s:iterator> <br>
+				<br/><br/><br/><br/>
 				<table>
 					<tr>
 						<td align="center" valign="center" width="300" bgcolor="FFFFBC">

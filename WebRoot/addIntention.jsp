@@ -2,18 +2,22 @@
 <%@ page contentType="text/html;charset=utf-8" pageEncoding="GBK"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
+<script type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
 <head>
 <title>Trip Guider - Add Intention</title>
+<link rel="stylesheet" href="bootstrap.css" type="text/css">
+<meta charset="utf-8">
 <s:head />
+
 </head>
-<body>
+<body bgcolor="#FFE7BA">
 	<table bgcolor="#FFF8DC" width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr >
 		<td align="center" valign="center">
 	<h1>Trip Guider - Add Intention</h1>
 	<s:form action="addIntention">
 		<s:textfield name="intendPlace" label="想去的景点" />
-		<s:textfield name="intendTime" label="期望的时间(格式XXXX/XX/XX)" />
+		<s:textfield name="intendTime" label="期望的时间(格式XXXX-XX-XX)" onclick="WdatePicker()" onfocus="WdatePicker({minDate:'%y-%M-{%d+1}'})"/>
 		<s:textfield name="intendPrice" label="期望的花费(人民币)" />
 		<s:textfield name="intendFriendAge" label="期望同伴的年龄"/>
 		<s:textfield name="intendFriendGender" label="期望同伴的性别"/>

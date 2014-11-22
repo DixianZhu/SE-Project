@@ -20,7 +20,7 @@
 		<s:param name="userName" value="userName" />
 		<s:param name="passWord" value="passWord"/>
 				  </s:url>'><s:property value="#n[5]"/>
-		</a>
+		</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<a
 		href='<s:url action="inviteTeam">
 		<s:param name="teamName" value="#n[0]" />
