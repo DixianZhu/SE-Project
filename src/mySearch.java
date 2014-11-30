@@ -78,11 +78,11 @@ public class mySearch extends ActionSupport{
 		ScoreDoc[] hits = results.scoreDocs;
 		int numTotalHits = results.totalHits;
 		System.out.println(numTotalHits + " total matching documents");
-		//SimpleHTMLFormatter formatter = new SimpleHTMLFormatter("<font color='red'>","</font>");
-        //QueryScorer fragmentScore = new QueryScorer(query);
-        //Highlighter highlighter = new Highlighter(formatter,fragmentScore);
-        //Fragmenter fragmenter = new SimpleFragmenter(100);
-        //highlighter.setTextFragmenter(fragmenter);
+		SimpleHTMLFormatter formatter = new SimpleHTMLFormatter("<span style=\"color:red;\">", "</span>");//定制高亮标签  
+        QueryScorer fragmentScore = new QueryScorer(query);
+        Highlighter highlighter = new Highlighter(formatter,fragmentScore);
+        Fragmenter fragmenter = new SimpleFragmenter(100);
+        highlighter.setTextFragmenter(fragmenter);
 		for (int i = 0; i < hits.length; i++) {
 			Document doc = searcher.doc(hits[i].doc);
 			String []temp = new String[3];
@@ -92,10 +92,12 @@ public class mySearch extends ActionSupport{
 			if (path != null) {
 				System.out.println((i + 1) + ". " + path);
 				String title = doc.get("title");
-				//String highlighterTitle = highlighter.getBestFragment(analyzer, "title", title);
-				//String highlighterContent = highlighter.getBestFragment(analyzer, "content", content);
-				temp[1]=title;
-				temp[2]=content;
+				String highlighterTitle = highlighter.getBestFragment(analyzer, "title", title);
+				String highlighterContent = highlighter.getBestFragment(analyzer, "content", content);
+				if(highlighterTitle!=null) temp[1]=highlighterTitle;
+				else temp[1]=title;
+				if(highlighterContent!=null) temp[2]=highlighterContent;
+				else temp[2]=content;
 				res.add(temp);
 				if (title == null) {
 					System.out.println("   Title: " + title);

@@ -6,25 +6,28 @@
 <table  width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr >
 	<td align="center" valign="center">	
-	These are your intention:
+	检索结果
 	<br>
 	<br>
+	<table>
+	<td>编号</td><td>目的地</td><td>详细信息</td>
 	<s:iterator value="res" status="itStatus" id='n'>
-		<li><s:property value="#itStatus.count" />: 目的地:<s:property
-				value='#n[1]' />&nbsp;&nbsp; 详细介绍:<s:property value='#n[2]' />&nbsp;&nbsp;&nbsp;&nbsp;
+		<tr>
+		<td><s:property value="#itStatus.count" />:</td> 
+		<td><s:property	 value='#n[1]' escape="false"/></td>
+		<td><s:property value='#n[2]' escape="false"/></td>
+	    </tr>
 	</s:iterator>
-	<br>
-	<br>
-	<a href="index.jsp">exit</a>
-		<br>
+	</table>
 	<a
 		href='<s:url action="login">
-		<s:param name="userName" value="userName"/>
+		<s:param name="userName" value="userName" />
 		<s:param name="passWord" value="passWord"/>
-				  </s:url>'>返回主界面
-		</a>
-		</td>
+				  </s:url>'><img src="iconpng.png" />
+	</a>
+	</td>
 	</tr>
 	</table>
+	
 </body>
 </html>

@@ -15,16 +15,8 @@ public class Commition extends ActionSupport {
 	private String url = "jdbc:mysql://localhost:3306/trip";
 	private String user = "root";
 	private String psw = "2121778";
-	private int num;
 	private ArrayList<String[]> res = new ArrayList<String[]>();
 
-	public void setNum(int num) {
-		this.num = num;
-	}
-
-	public int getNum() {
-		return num;
-	}
 	
 	public String getTypeString(){
 		return typeString;
@@ -184,7 +176,6 @@ public class Commition extends ActionSupport {
 	}
 
 	public String deleteCommition() throws Exception {
-		System.out.println("num = "+num);
 		Connection conn = null;
 		Statement stmt = null;
 		int deleteCount = 0;
@@ -256,12 +247,13 @@ public class Commition extends ActionSupport {
 							+ intendPlace + "'");
 			if (rs.next()) {
 				do {
-					String[] temp = new String[4];
+					String[] temp = new String[5];
 					temp[0] = rs.getString("real_name");
 					temp[1] = rs.getString("i_place");
 					System.out.println(temp[0]);
 					temp[2] = rs.getString("i_time");
 					temp[3] = rs.getString("commition");
+					if(rs.getString("user_name").equals(userName)) temp[4]="É¾³ý";
 					res.add(temp);
 				} while (rs.next());
 			}

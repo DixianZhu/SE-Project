@@ -3,30 +3,29 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <body bgcolor="#FFF8DC">
-	<table width="100%" height="100%" border="0" cellspacing="0"
+	<table width="50%" height="50%" border="0" cellspacing="0"
 		cellpadding="0">
-		<h1><s:property value="typeString"/></h1>
-		<tr>
-			<td align="center" valign="center">请选择景点: <br> <br>
-				<s:iterator value="res" status="itStatus" id='n'>
-					<li><s:property value="#itStatus.count" />: 景点:<s:property
-							value='#n[0]' />&nbsp;&nbsp;&nbsp;&nbsp;
-			<a
+		<h1>请选择景点</h1>
+			<s:iterator value="res" status="itStatus" id='n'>
+			<tr>
+			<td><s:property value="#itStatus.count" /></td>
+			<td><s:property value='#n[0]' /></td>
+			<td><a
 			href='<s:url action="moreOthersCommition">
 		<s:param name="userName" value="userName" />
 		<s:param name="passWord" value="passWord"/>
 		<s:param name="intendPlace" value="#n[0]" />
-				  </s:url>'>更多评论
-		</a>
-				</s:iterator> <br>
-				 <br> <a href="index.jsp">exit</a> <br> <a
-				href='<s:url action="login">
-		<s:param name="userName" value="userName"/>
-		<s:param name="passWord" value="passWord"/>
-				  </s:url>'>返回主界面
+				  </s:url>'>查看评论
 			</a>
 			</td>
-		</tr>
+			</tr>
+			</s:iterator> 
 	</table>
+	<a
+					href='<s:url action="login">
+					<s:param name="userName" value="userName"/>
+					<s:param name="passWord" value="passWord"/>
+				  </s:url>'><img src="iconpng.png" />
+			</a>
 </body>
 </html>

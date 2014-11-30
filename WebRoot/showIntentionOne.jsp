@@ -11,27 +11,36 @@
 	These are your intention:
 	<br>
 	<br>
+	<table cellpadding="10">
 	<s:iterator value="res" status="itStatus" id='n'>
-		<li><s:property value="#itStatus.count" />: 目的地:<s:property
-				value='#n[0]' />&nbsp;&nbsp; 出发时间:<s:property value='#n[1]' />&nbsp;&nbsp;&nbsp;&nbsp;
-			<a
+	<tr>
+	<td>编号</td>
+	<td>目的地</td>
+	<td>出发时间</td>
+
+	</tr>
+	<tr>
+		<td><s:property value="#itStatus.count" /></td>
+		<td><s:property value='#n[0]' /></td>
+		<td><s:property value='#n[1]' /></td>
+		<td><a
 			href='<s:url action="showIntentionTwo">
 		<s:param name="userName" value="userName" />
 		<s:param name="passWord" value="passWord"/>
 		<s:param name="intendPlace" value="#n[0]" />
 				  </s:url>'>详细信息
-		</a> <a
+		</a></td> 
+		<td><a
 			href='<s:url action="deleteIntention">
 		<s:param name="userName" value="userName" />
 		<s:param name="passWord" value="passWord"/>
 		<s:param name="intendPlace" value="#n[0]" />
 				  </s:url>'>删除
-		</a>
+		</a></td>
+		</tr>
 	</s:iterator>
-	<br>
-	<br>
-	<a href="index.jsp">exit</a>
-	<br>
+	</table>
+	
 	<a
 		href='<s:url action="contactUserName">
 	    <s:param name="userName" value="userName"/>
@@ -42,7 +51,7 @@
 		href='<s:url action="login">
 		<s:param name="userName" value="userName"/>
 		<s:param name="passWord" value="passWord"/>
-				  </s:url>'>返回主界面
+				  </s:url>'><img src="iconpng.png" />
 		</a>
 		</td>
 	</tr>

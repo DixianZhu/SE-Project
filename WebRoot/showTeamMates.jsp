@@ -5,37 +5,50 @@
 <body>
 	<h1><s:property value="typeString"/></h1>
 	
-	<br>
+	<table cellpadding="10">
+	<tr>
+		<td>编号</td>
+		<td>用户名</td>
+		<td>目的地</td>
+		<td>期望时间</td>
+		<td>期望花费</td>
+		<td>组队情况</td>
+		<td>是否可申请</td>
+		<td>是否可邀请</td>
+	</tr>
 	<s:iterator value="res" status="itStatus" id='n'>
-		<li><s:property value="#itStatus.count" />:
-		 队友用户名:<s:property value='#n[0]'/>&nbsp;&nbsp;
-		 目的地:<s:property value='#n[1]'/>&nbsp;&nbsp;
-		 出发时间:<s:property value='#n[2]'/>&nbsp;&nbsp;
-		期望花费:<s:property value='#n[3]'/>&nbsp;&nbsp;
-		队伍:<s:property value='#n[4]'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<a
+	<tr>
+		<td><s:property value="#itStatus.count" /></td>
+		<td><s:property value='#n[0]'/></td>
+		<td><s:property value='#n[1]'/></td>
+		<td><s:property value='#n[2]'/></td>
+		<td><s:property value='#n[3]'/></td>
+		<td><s:property value='#n[4]'/></td>
+		<td><a
 		href='<s:url action="applyTeam">
 		<s:param name="teamName" value="#n[0]" />
 		<s:param name="intendPlace" value="intendPlace" />
 		<s:param name="userName" value="userName" />
 		<s:param name="passWord" value="passWord"/>
 				  </s:url>'><s:property value="#n[5]"/>
-		</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<a
+		</a></td>
+		<td><a
 		href='<s:url action="inviteTeam">
 		<s:param name="teamName" value="#n[0]" />
 		<s:param name="intendPlace" value="intendPlace" />
 		<s:param name="userName" value="userName" />
 		<s:param name="passWord" value="passWord"/>
 				  </s:url>'><s:property value="#n[6]"/>
-		</a>
+		</a></td>
+	</tr>
 	</s:iterator>
+	</table>
 	<br><a
 		href='<s:url action="showIntentionTwo">
 		<s:param name="userName" value="userName" />
 		<s:param name="passWord" value="passWord"/>
 		<s:param name="intendPlace" value="intendPlace"/>
-				  </s:url>'>返回上一页
+				  </s:url>'><img src="iconpng.png" />
 	</a>
 	<br><a
 		href='<s:url action="showIntentionOne">

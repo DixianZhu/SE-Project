@@ -5,20 +5,45 @@
 <link rel="stylesheet" href="bootstrap.css" type="text/css">
 <meta charset="utf-8">
 <body bgcolor="#FFF8DC">
-	<table width="100%" height="100%" border="0" cellspacing="0"
+	<table width="80%" height="80%" border="0" cellspacing="0"
 		cellpadding="0">
-		<h1><s:property value="typeString"/></h1>
 		<tr>
-			<td align="center" valign="center">评论: <br> <br>
+					<td align="center" valign="center" width="100"></td>
+					<td>楼层</td>
+					<td>评论人</td>
+					<td>目的地</td>
+					<td>出发时间</td>
+					<td>评论</td> 
+					</tr>
+				<tr>
+					<td align="center" valign="center" width="100"></td>
+					<td>楼层</td>
+					<td>评论人</td>
+					<td>目的地</td>
+					<td>出发时间</td>
+					<td>评论</td> 
+					</tr>
 				<s:iterator value="res" status="itStatus" id='n'>
-					<li><s:property value="#itStatus.count" />: 评论人:<s:property
-							value='#n[0]' />&nbsp;&nbsp; 目的地:<s:property value='#n[1]' />&nbsp;&nbsp;
-						出发时间:<s:property value='#n[2]' />&nbsp;&nbsp; 评论:<s:property
-							value='#n[3]' />&nbsp;&nbsp;&nbsp;&nbsp; 
-				</s:iterator> <br>
-				<br/><br/><br/><br/>
+					<tr>
+					<td align="center" valign="center" width="100"></td>
+					<td><s:property value="#itStatus.count" /></td>
+					<td><s:property value='#n[0]' /></td>
+					<td><s:property value='#n[1]' /></td>
+					<td><s:property value='#n[2]' /></td>
+					<td><s:property value='#n[3]' /></td> 
+					<td><a
+						href='<s:url action="deleteCommition">
+		<s:param name="userName" value="userName" />
+		<s:param name="passWord" value="passWord"/>
+		<s:param name="num" value="#itStatus.count" />
+				  </s:url>'><s:property value='#n[4]' />
+					</a></td>
+					</tr>
+				</s:iterator>
+				</table>
 				<table>
 					<tr>
+					<td align="center" valign="center" width="100"></td>
 						<td align="center" valign="center" width="300" bgcolor="FFFFBC">
 							<h2>发表评论</h2> <font size="2" color="#000000"><s:form
 									action="addCommition">
@@ -30,15 +55,15 @@
 									<s:textfield name="commition" label="comment" value="" />
 									<s:submit /></s:form> </font>
 						</td>
+						<td align="center" valign="center" width="200"></td>
+						<td >
+						<a href='<s:url action="login">	
+							<s:param name="userName" value="userName"/>
+							<s:param name="passWord" value="passWord"/>
+				  			</s:url>'><img src="iconpng.png" />
+				  		</a>	
+						</td>
 					</tr>
-				</table> <br> <a href="index.jsp">exit</a> <br> <a
-				href='<s:url action="login">
-		<s:param name="userName" value="userName"/>
-		<s:param name="passWord" value="passWord"/>
-				  </s:url>'>返回主界面
-			</a>
-			</td>
-		</tr>
-	</table>
+				</table> 
 </body>
 </html>
