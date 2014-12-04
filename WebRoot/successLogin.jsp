@@ -17,6 +17,7 @@
 		<s:submit />
 		</s:form>
 		</td>
+		<td><a href="map.jsp">²é¿´µØÍ¼</a> </td>
 		</tr>
 		<tr>
 			<td align="center" valign="center">
