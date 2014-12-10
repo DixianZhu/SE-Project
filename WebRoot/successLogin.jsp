@@ -15,9 +15,9 @@
 		<s:hidden name="userName"/>
 	    <s:hidden name="passWord"/>
 		<s:submit />
+		<td><a href="map.jsp">查看地图</a> </td>
 		</s:form>
 		</td>
-		<td><a href="map.jsp">查看地图</a> </td>
 		</tr>
 		<tr>
 			<td align="center" valign="center">
