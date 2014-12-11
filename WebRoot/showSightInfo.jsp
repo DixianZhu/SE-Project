@@ -9,6 +9,13 @@
 	检索结果
 	<br>
 	<br>
+	<a
+			href='<s:url action="mapPlace">
+		<s:param name="userName" value="userName" />
+		<s:param name="passWord" value="passWord"/>
+		<s:param name="intendPlace" value="myQuery" />
+				  </s:url>'>查看地图
+	</a>
 	<table>
 	<td>编号</td><td>目的地</td><td>详细信息</td>
 	<s:iterator value="res" status="itStatus" id='n'>

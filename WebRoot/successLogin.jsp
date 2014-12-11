@@ -15,7 +15,6 @@
 		<s:hidden name="userName"/>
 	    <s:hidden name="passWord"/>
 		<s:submit />
-		<td><a href="map.jsp">²é¿´µØÍ¼</a> </td>
 		</s:form>
 		</td>
 		</tr>

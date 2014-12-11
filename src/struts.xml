@@ -103,5 +103,8 @@
 			<result name="success">/showTeamMates.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
+		<action name="mapPlace" class="Intention" method="contactUserName">
+			<result name="success">/map.jsp</result>
+		</action>
 	</package>
 </struts>    
