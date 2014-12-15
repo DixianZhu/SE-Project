@@ -18,7 +18,7 @@
 	<div style="margin:0 auto; border:#000000 solid 1px; width:200px; float:left" id="r-result"></div>
 	<div style="margin:0 auto; border:#000000 solid 1px; width:880px; float:left" id="allmap"></div>
 </body>
-</html>
+</html> 
 <script  type="text/javascript" >
 	// 百度地图API功能
 	var map = new BMap.Map("allmap");
