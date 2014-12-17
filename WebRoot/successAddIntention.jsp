@@ -53,6 +53,7 @@
 			<td><s:property value="teamName"/></td>
 		</tr>
 	</table>
+	
 	<table border='0' >
 		<tr>
 			<td>我的申请1</td>
@@ -129,6 +130,29 @@
 		</a></td>
 		</tr>
 	</table>
+	队伍讨论：
+	<table>
+	<td>编号</td>
+	<td>用户名</td>
+	<td>发言</td>
+	<s:iterator value="broadcast" status="itStatus" id="n">
+	<tr>
+		<td><s:property value="#itStatus.count" /></td>
+		<td><s:property value='#n[0]'/></td>
+		<td><s:property value='#n[1]'/></td>
+	</tr>
+	</s:iterator>
+	</table>
+	发表言论
+	<font size="2" color="#000000">
+		<s:form action="addChat">
+		<s:hidden name="userName" />
+		<s:hidden name="passWord" />
+		<s:hidden name="teamName" />
+		<s:hidden name="intendPlace" />
+		<s:textfield name="word" label="发言"  />
+		<s:submit />
+	</s:form> </font>
 	入队申请：
 	<s:iterator value="applySet" status="itStatus" id="n">
 		<li><s:property value="#itStatus.count" />:

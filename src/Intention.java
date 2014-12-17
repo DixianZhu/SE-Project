@@ -26,6 +26,7 @@ public class Intention extends ActionSupport {
 	private String invite1;
 	private String invite2;
 	private String invite3;
+	private String word;
 	public String getApply1(){
 		return apply1;
 	}
@@ -65,6 +66,13 @@ public class Intention extends ActionSupport {
 	private ArrayList<String[]> res = new ArrayList<String[]>();
 	private ArrayList<String[]> applySet = new ArrayList<String[]>();
 	private ArrayList<String[]> inviteSet = new ArrayList<String[]>();
+	private ArrayList<String[]> broadcast = new ArrayList<String[]>();
+	public String getWord(){
+		return word;
+	}
+	public void setWord(String word){
+		this.word=word;
+	}
 	public String getTypeString(){
 		return typeString;
 	}
@@ -166,6 +174,9 @@ public class Intention extends ActionSupport {
 	public ArrayList<String[]> getInviteSet() {
 		return inviteSet;
 	}
+	public ArrayList<String[]> getBroadcast(){
+		return broadcast;
+	}
 
 	public String contactUserName() throws Exception {
 		System.out.println("contact :"+userName);
@@ -259,6 +270,22 @@ public class Intention extends ActionSupport {
 					inviteSet.add(temp);
 				}
 				typeString="查看旅游意向";
+				rs = stmt
+						.executeQuery("select * from chat where team_username = '"
+								+ teamName + "'and i_Place = '" + intendPlace + "'");
+				int count=0;
+				while(rs.next())
+				{
+					count++;
+					String []temp = new String[2];
+					temp[0]=rs.getString("user_name");
+					temp[1]=rs.getString("word");
+					broadcast.add(temp);
+				}
+				if(count>10)
+				{
+					return deleteChat(broadcast.get(0));
+				}
 				return SUCCESS;
 			} else {
 				return ERROR;
@@ -269,7 +296,61 @@ public class Intention extends ActionSupport {
 			return ERROR;
 		}
 	}
-    
+	private String deleteChat(String[] dWord) throws Exception{
+		Connection conn = null;
+		Statement stmt = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(url, user, psw);
+			if (!conn.isClosed())
+				System.out.println("Success connecting to the Database!");
+			else
+				System.out.println("Fail connecting to the Database!");
+			stmt = conn.createStatement();
+			int deleteCount=0;
+			deleteCount=stmt.executeUpdate("delete from chat where user_name = '"
+					+ dWord[0] + "' and i_place = '" + intendPlace + "' and team_username = '" + teamName + "' and word ='" + dWord[1] + "'");
+			System.out.println(deleteCount);
+			if (deleteCount != 0) {
+				return SUCCESS;
+			} else {
+				return ERROR;
+			}
+		}catch (Exception e) {
+			System.out.print("connection error!");
+			e.printStackTrace();
+			return ERROR;
+		}
+	}
+    public String addChat() throws Exception{
+    	Connection conn = null;
+		Statement stmt = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(url, user, psw);
+			if (!conn.isClosed())
+				System.out.println("Success connecting to the Database!");
+			else
+				System.out.println("Fail connecting to the Database!");
+			stmt = conn.createStatement();
+			int count=0;
+			count=stmt.executeUpdate("insert into chat(user_name,team_username,i_place,word)"
+			+ "values('"
+			+ userName
+			+ "','"
+			+ teamName
+			+ "','"
+			+ intendPlace
+			+ "','"
+			+ word + "')");
+			if(count==0) return ERROR;
+			return showIntentionTwo();
+		}catch (Exception e) {
+			System.out.print("connection error!");
+			e.printStackTrace();
+			return ERROR;
+		}
+    }
 	public String deleteIntention() throws Exception {
 		Connection conn = null;
 		int deleteCount = 0;

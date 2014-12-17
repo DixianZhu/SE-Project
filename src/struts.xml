@@ -106,5 +106,9 @@
 		<action name="mapPlace" class="Intention" method="contactUserName">
 			<result name="success">/map.jsp</result>
 		</action>
+		<action name="addChat" class="Intention" method="addChat">
+			<result name="success">/successAddIntention.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
 	</package>
 </struts>    
