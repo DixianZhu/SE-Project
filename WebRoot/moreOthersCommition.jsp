@@ -15,14 +15,6 @@
 					<td>出发时间</td>
 					<td>评论</td> 
 					</tr>
-				<tr>
-					<td align="center" valign="center" width="100"></td>
-					<td>楼层</td>
-					<td>评论人</td>
-					<td>目的地</td>
-					<td>出发时间</td>
-					<td>评论</td> 
-					</tr>
 				<s:iterator value="res" status="itStatus" id='n'>
 					<tr>
 					<td align="center" valign="center" width="100"></td>
@@ -35,6 +27,10 @@
 						href='<s:url action="deleteCommition">
 		<s:param name="userName" value="userName" />
 		<s:param name="passWord" value="passWord"/>
+		<s:param name="intendPlace" value="#n[1]"/>
+		<s:param name="intendTime" value="#n[2]"/>
+		<s:param name="commition" value="#n[3]"/>
+		<s:param name="realName">More</s:param>
 		<s:param name="num" value="#itStatus.count" />
 				  </s:url>'><s:property value='#n[4]' />
 					</a></td>

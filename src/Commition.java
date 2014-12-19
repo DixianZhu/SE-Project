@@ -189,11 +189,20 @@ public class Commition extends ActionSupport {
 			stmt = conn.createStatement();
 			deleteCount = stmt
 					.executeUpdate("delete from commition where user_name = '" + userName
-							+ "' and real_name='" + realName + "' and i_place='" + intendPlace + "' and i_time='" + intendTime + "' and commition='" + commition + "'");
+							+ "' and i_place='" + intendPlace + "' and i_time='" + intendTime + "' and commition='" + commition + "'");
+			System.out.println("deleteCount = "+deleteCount);
 			if (deleteCount != 0) {
-				showCommition();
 				typeString="É¾³ý³É¹¦";
-				return SUCCESS;
+				System.out.println("realName="+realName);
+				if(realName.equals("More")){
+					moreOthersCommition();
+					System.out.println("others");
+					return "others";
+				}else{
+					showCommition();
+					System.out.println("success");
+					return SUCCESS;
+				}
 			}
 			return ERROR;
 		} catch (Exception e) {

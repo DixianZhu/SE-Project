@@ -1,3 +1,4 @@
+
 <%@ page language="java" import="java.util.*,java.sql.*" %>
 <%@ page contentType="text/html;charset=utf-8" pageEncoding="GBK"%> 
 <%@ taglib prefix="s" uri="/struts-tags"%>
@@ -38,7 +39,16 @@
 		<s:param name="intendPlace" value="intendPlace" />
 		<s:param name="userName" value="userName" />
 		<s:param name="passWord" value="passWord"/>
-				  </s:url>'><s:property value="#n[6]"/>
+				  </s:url>'><s:property value=
+				  "#n[6]"/>
+		</a></td>
+		<td><a
+		href='<s:url action="quitTeam">
+		<s:param name="userName" value="userName" />
+		<s:param name="passWord" value="passWord"/>
+		<s:param name="intendPlace" value="intendPlace"/>
+		<s:param name="teamName" value="teamName"/>
+				  </s:url>'><s:property value="kickFlag"/>
 		</a></td>
 	</tr>
 	</s:iterator>

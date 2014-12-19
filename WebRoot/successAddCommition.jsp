@@ -28,6 +28,9 @@
 						href='<s:url action="deleteCommition">
 		<s:param name="userName" value="userName" />
 		<s:param name="passWord" value="passWord"/>
+		<s:param name="intendPlace" value="#n[1]"/>
+		<s:param name="intendTime" value="#n[2]"/>
+		<s:param name="commition" value="#n[3]"/>
 		<s:param name="num" value="#itStatus.count" />
 				  </s:url>'>É¾³ý
 					</a></td>

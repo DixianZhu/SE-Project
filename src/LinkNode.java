@@ -35,7 +35,7 @@ public class LinkNode extends ActionSupport {
 	private ArrayList<String[]> applySet = new ArrayList<String[]>();
 	private ArrayList<String[]> inviteSet = new ArrayList<String[]>();
 	private ArrayList<String[]> res = new ArrayList<String[]>();
-
+	private String kickFlag=null;
 	public void setClearFlag(String clearFlag) {
 		this.clearFlag = Integer.parseInt(clearFlag);
 	}
@@ -43,7 +43,11 @@ public class LinkNode extends ActionSupport {
 	public int getClearFlag() {
 		return clearFlag;
 	}
-
+    
+	public String getKickFlag(){
+		return kickFlag;
+	}
+	
 	public void setClearType(String clearType){
 		this.clearType=clearType;
 	}
@@ -358,6 +362,7 @@ public class LinkNode extends ActionSupport {
 			} else {
 				typeString = "队伍成员";
 			}
+			if(userName.equals(teamName)) kickFlag="请离队伍";
 			return SUCCESS;
 		} catch (Exception e) {
 			System.out.print("connection error!");
@@ -509,6 +514,7 @@ public class LinkNode extends ActionSupport {
 				if (addTeamFlag.equals("Yes")) {
 					userName = tempUserName;
 				}
+				if(userName.equals(teamName)) kickFlag="请离队伍";
 				return SUCCESS;
 			} else {
 				return ERROR;
