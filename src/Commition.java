@@ -194,7 +194,7 @@ public class Commition extends ActionSupport {
 			if (deleteCount != 0) {
 				typeString="É¾³ý³É¹¦";
 				System.out.println("realName="+realName);
-				if(realName.equals("More")){
+				if("More".equals(realName)){
 					moreOthersCommition();
 					System.out.println("others");
 					return "others";
