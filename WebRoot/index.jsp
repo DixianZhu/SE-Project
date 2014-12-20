@@ -25,6 +25,7 @@ else
 }
 </script>
 <body>
+
 	<div id="Layer1" style="position:absolute; width:100%; height:100%; z-index:-1">    
 		<img src="3.jpg" height="100%" width="100%"/>    
 	</div>
@@ -44,8 +45,21 @@ else
 		<s:form action="login" >
 			<s:textfield name="userName" label="username" />
 			<s:password name="passWord" label="password" />
-			<s:submit />
-		</s:form>
+			<s:submit   style="	
+						width: 30%;
+						display: inline-block;
+						text-align: center;
+						text-decoration: none;
+						font: 13px/100% Arial, Helvetica, sans-serif;
+						padding: .5em 2em .55em;
+						text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+						-webkit-border-radius: .5em;
+						-moz-border-radius: .5em;
+						border-radius: .5em;
+						-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, .2);
+						-moz-box-shadow: 0 1px 5px rgba(0, 0, 0, .2);
+						box-shadow: 0 1px 5px rgba(0, 0, 0, .2);" />
+		</s:form >
 
 		<a href='RegisterMoreInfo.jsp'>Don't have an account?</a>	
 		</td>
