@@ -5,35 +5,45 @@
 <script type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
 <head>
 <title>Trip Guider - Add Intention</title>
-<link rel="stylesheet" href="bootstrap.css" type="text/css">
+
 <meta charset="utf-8">
 <s:head />
+<link href="style.css" rel="stylesheet" type="text/css" />
 
+<script type="text/javascript" src="script.js"></script>
 </head>
-<body bgcolor="#FFE7BA">
-	<table bgcolor="#FFF8DC" width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
-	<tr >
-		<td align="center" valign="center">
-	<h1>Trip Guider - Add Intention</h1>
-	<s:form action="addIntention">
-		<s:textfield name="intendPlace" label="想去的景点" />
-		<s:textfield name="intendTime" label="期望的时间(格式XXXX-XX-XX)" onclick="WdatePicker()" onfocus="WdatePicker({minDate:'%y-%M-{%d+1}'})"/>
-		<s:textfield name="intendPrice" label="期望的花费(人民币)" />
-		<s:textfield name="intendFriendAge" label="期望同伴的年龄"/>
-		<s:textfield name="intendFriendGender" label="期望同伴的性别"/>
-		<s:textfield name="intendFriendOccupation" label="期望同伴的工作"/>
-		<s:textfield name="intendFriendLocation" label="期望同伴的地域"/>
-		<s:textfield name="intendFriendHobby" label="期望同伴的爱好" />
+<body >
+     <dl class="formbox">
+	
+	
+	
+	<s:form action="addIntention" method="get">
+	<dd><input id="name"  name="intendPlace" type="text" class="text"  /></dd>
+	<dd><input id="name1"  name="intendTime" type="text" class="text"  onclick="WdatePicker()" onfocus="WdatePicker({minDate:'%y-%M-{%d+1}'})" /></dd>
+	<dd><input id="name2"  name="intendPrice" type="text" class="text"  /></dd>
+	<dd><input id="name3"  name="intendFriendAge" type="text" class="text"  /></dd>
+	<dd><input id="contact"  name="intendFriendAge" type="text" class="text"  /></dd>
+	<dd><input id="come_from"  name="intendFriendLocation" type="text" class="text"  /></dd>
+	<dd><input id="name4"  name="intendFriendHobby" type="text" class="text"  /></dd>
+		
+		
+	<dd>
+			<h2>就这样！</h2>
+			<div class="btn"><input type="submit" value="提交" /></div>
+		</dd>
+	
 		<s:hidden name="userName" label="userName"/>
 		<s:hidden name="passWord" label="passWord"/>
-		<s:submit />
+		
 	</s:form>
+	</dl>
 	<br>
+	<div text-align:center>
 	<a
 		href='<s:url action="showIntentionOne">
 		<s:param name="userName" value="userName" />
 		<s:param name="passWord" value="passWord"/>
-				  </s:url>'>查看所有计划
+				  </s:url>' >查看所有计划
 	</a>
 	<br>
 	<a
@@ -42,8 +52,6 @@
 		<s:param name="passWord" value="passWord"/>
 				  </s:url>'>返回主界面
 		</a>
-		</td>
-		</tr>
-		</table>
+		</div>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <title>Register</title>
-<link rel="stylesheet" href="bootstrap.css" type="text/css">
+
 <meta charset="utf-8">
 <script type="text/javascript">
 function ischange(x)
@@ -20,19 +20,97 @@ else
 }
 }
 </script>
+<head>
+<style type="text/css">
+body, div, h1, form, fieldset, input, textarea {
+	margin: 0; padding: 0; border: 0; outline: none;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	background: #728eaa;
+	background: -moz-linear-gradient(top, #25303C 0%, #728EAA 100%); /* firefox */	
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#25303C), color-stop(100%,#728EAA)); /* webkit */
+	font-family: sans-serif; 
+}
+
+#contact {
+	width: 430px; margin: 60px auto; padding: 60px 30px;
+	background: #c9d0de; border: 1px solid #e1e1e1;
+	-moz-box-shadow: 0px 0px 8px #444;
+	-webkit-box-shadow: 0px 0px 8px #444;
+}
+
+h1 {
+	font-size: 35px; color: #445668; text-transform: uppercase;
+	text-align: center; margin: 0 0 35px 0; text-shadow: 0px 1px 0px #f2f2f2;
+}
+
+label {
+	float: left; clear: left; margin: 11px 20px 0 0; width: 95px;
+	text-align: right; font-size: 16px; color: #445668; 
+	text-transform: uppercase; text-shadow: 0px 1px 0px #f2f2f2;
+}
+
+input {
+	width: 260px; height: 35px; padding: 5px 20px 0px 20px; margin: 0 0 20px 0; 
+	background: #5E768D;
+	background: -moz-linear-gradient(top, #546A7F 0%, #5E768D 20%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#546A7F), color-stop(20%,#5E768D)); /* webkit */
+	border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
+	-moz-box-shadow: 0px 1px 0px #f2f2f2;-webkit-box-shadow: 0px 1px 0px #f2f2f2;
+	font-family: "Times New Roman",Georgia,Serif; font-size: 16px; color: #f2f2f2;  text-shadow: 0px -1px 0px #334f71; 
+}
+	input::-webkit-input-placeholder  {
+    	color: #a1b2c3; text-shadow: 0px -1px 0px #38506b;  
+	}
+	input:-moz-placeholder {
+	    color: #a1b2c3; text-shadow: 0px -1px 0px #38506b; 
+	}
+
+textarea {
+	width: 260px; height: 170px; padding: 12px 20px 0px 20px; margin: 0 0 20px 0; 
+	background: #5E768D;
+	background: -moz-linear-gradient(top, #546A7F 0%, #5E768D 20%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#546A7F), color-stop(20%,#5E768D)); /* webkit */
+	border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
+	-moz-box-shadow: 0px 1px 0px #f2f2f2;-webkit-box-shadow: 0px 1px 0px #f2f2f2;
+	font-family: sans-serif; font-size: 16px; color: #f2f2f2; text-transform: uppercase; text-shadow: 0px -1px 0px #334f71; 
+}
+	textarea::-webkit-input-placeholder  {
+    	color: #a1b2c3; text-shadow: 0px -1px 0px #38506b;  
+	}
+	textarea:-moz-placeholder {
+	    color: #a1b2c3; text-shadow: 0px -1px 0px #38506b; 
+	}
+	
+input:focus, textarea:focus {
+	background: #728eaa;
+	background: -moz-linear-gradient(top, #668099 0%, #728eaa 20%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#668099), color-stop(20%,#728eaa)); /* webkit */
+}
+
+input[type=submit] {
+	width: 185px; height: 52px; float: right; padding: 10px 15px; margin: 0 15px 0 0;
+	-moz-box-shadow: 0px 0px 5px #999;-webkit-box-shadow: 0px 0px 5px #999;
+	border: 1px solid #556f8c;
+	background: -moz-linear-gradient(top, #718DA9 0%, #415D79 100%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#718DA9), color-stop(100%,#415D79)); /* webkit */
+	cursor: pointer;
+}
+</style>
+</head>
 <body>
-<div id="Layer1" style="position:absolute; width:100%; height:100%; z-index:-1">    
-		<img src="3.jpg" height="100%" width="100%"/>    
-	</div>
-	<table valign="bottom" align="center" border="0">
-	<tr><br/><br/><br/><br/></tr>
-	<tr >
-		<td><font size="6" color="#000000"><p>Please type more information of you</p></font><br></td>
-	</tr>
-	<tr>
-	<td>
-		<s:form action="register_two">
+     <div id="contact">
+	 <h1>Please type more information of you</h1>
+	   <form action="register_two" method="post">
+		<fieldset>
+		
 		<s:textfield name="userName" label="user name" required="true" onkeyup="ischange(this.id)"/>
+		<div  id="f" style="display:none">字符长度应>7</div>
 		<br>
 		<s:textfield name="passWord" label="pass word" required="true"/>
 		<br>
@@ -45,19 +123,12 @@ else
        	required="true"
 		 />
 		<br>
-		<s:textfield name="age" label="age"/>
-		<br>
-		<s:textfield name="location" label="location"/>
-		<br>
-		<s:textfield name="occupation" label="occupation"/>
-		<br>
-		<s:textfield name="hobby" label="hobby"/>
-		<br>
+		
 		<s:submit />
-		</s:form>
-				<div  id="f" style="display:none">字符长度应大于7</div>
-	</td>
-	</tr>
-	</table>
+		<br>
+				
+	</fieldset>
+	</form>
+</div>
 </body>
 </html>
