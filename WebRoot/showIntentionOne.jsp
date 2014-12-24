@@ -154,7 +154,7 @@ table {
 		href='<s:url action="login">
 		<s:param name="userName" value="userName"/>
 		<s:param name="passWord" value="passWord"/>
-				  </s:url>'><img src="iconpng.png" />
+				  </s:url>'>返回主界面
 		</a>
 		</td>
 	</tr>

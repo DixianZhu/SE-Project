@@ -367,6 +367,7 @@ public class Intention extends ActionSupport {
 					+ userName + "' and i_place = '" + intendPlace + "'");
 			System.out.println(deleteCount);
 			if (deleteCount != 0) {
+				showIntentionOne();
 				return SUCCESS;
 			} else {
 				return ERROR;

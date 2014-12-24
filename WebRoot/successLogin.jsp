@@ -5,75 +5,42 @@
 	<meta charset="utf-8">
 
 	<head>
-		<style type="text/css">
-			body {
-						text-align: center;
-					}
-					.button {
-						width: 60%;
-						display: inline-block;
-						outline: none;
-						cursor: pointer;
-						text-align: center;
-						text-decoration: none;
-						font: 18px/80%;
-						font-style: normal;
-						padding: .5em 2em .55em;
-						text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
-						-webkit-border-radius: .5em;
-						-moz-border-radius: .5em;
-						border-radius: .5em;
-						-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, .2);
-						-moz-box-shadow: 0 1px 5px rgba(0, 0, 0, .2);
-						box-shadow: 0 1px 5px rgba(0, 0, 0, .2);
-					}
-					.button:hover {
-						text-decoration: none;
-					}
-					.button:active {
-						position: relative;
-						top: 1px;
-					}
-					.orange {
-						color: #fef4e9;
-						border: solid 1px #da7c0c;
-						background: #f78d1d;
-						background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
-						background: -moz-linear-gradient(top, #faa51a, #f47a20);
-						filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
-					}
-					.orange:hover {
-						background: #a52a2a;
-						background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
-						background: -moz-linear-gradient(top, #f88e11, #f06015);
-						filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
-					}
-					.orange:active {
-						color: #fcd3a5;
-						background: -webkit-gradient(linear, left top, left bottom, from(#f47a20), to(#faa51a));
-						background: -moz-linear-gradient(top, #f47a20, #faa51a);
-						filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
-					}
-					h1 {
-						font-size: 40px;
-					}
-					legend {
-						font-size: 20px;
-						font-style: normal;
-					}
-					label {
-						font-family: "楷体";
-						font-size: 20px;
-					}
-		</style>
+		<script type="text/javascript" src="jquery.min.js"></script>
+		<script type="text/javascript">
+			function slideSwitch() {
+				var $current = $("#slideshow div.current");
+				// 判断div.current个数为0的时候 $current的取值
+				if ($current.length == 0) $current = $("#slideshow div:last");
+				// 判断div.current存在时则匹配$current.next(),否则转到第一个div
+				var $next = $current.next().length ? $current.next() : $("#slideshow div:first");
+				$current.addClass('prev');
+				$next.css({
+					opacity: 0.0
+				}).addClass("current").animate({
+					opacity: 1.0
+				}, 1000, function() {
+					//因为原理是层叠,删除类,让z-index的值只放在轮转到的div.current,从而最前端显示
+					$current.removeClass("current prev");
+				});
+			}
+			$(function() {
+				$("#slideshow span").css("opacity", "0.7");
+				$(".current").css("opacity", "1.0");
+				// 设定时间为3秒(1000=1秒)
+				setInterval("slideSwitch()", 3000);
+			});
+		</script>
+		<LINK href="style1.css" rel="stylesheet" type="text/css">
 	</head>
 
 	<body bgcolor="#FFF8DC">
-		<table width="100%" height="100%" border="0" cellpadding="0">
+		<table width="100%" height="100%" border="0" cellpadding="0" ;>
 			<td>
 				<table width="300px" height="100%" border="0" cellpadding="0" bgcolor="#787878">
 					<tr>
-						<td align="center" valign="center">
+						<td align="center" valign="top">
+							<br />
+							<br />
 							<h1>Welcome</h1>
 							<fieldset>
 								<legend> 个人信息</legend>
@@ -103,9 +70,8 @@
 									<label>爱好:</label>
 									<s:property value="hobby" />
 								</p>
-
-
 							</fieldset>
+							
 							<br/> <a href='<s:url action="contactUserName">
 
 	    						<s:param name="userName" value="userName"/>
@@ -134,54 +100,64 @@
 	   				 <s:param name="passWord" value="passWord"/>
 
 					</s:url>' class="button orange">查看景点评论</a>
-							<br/> <a href="index.jsp" class="button orange" color="#6495ED">Exit</a>
+					<br/>  <a href='<s:url action="addMoreInfo">
+
+	   				 <s:param name="userName" value="userName"/>
+
+	   				 <s:param name="passWord" value="passWord"/>
+					 <s:param name="realName" value="realName"/>
+					 <s:param name="gender" value="gender"/>
+
+					</s:url>' class="button orange">添加/修改详细信息</a>
+							<br/> <a href="index.jsp" class="button orange" >Exit</a>
 						</td>
 					</tr>
 				</table>
 			</td>
 			<td>
-				<table valign="center" align="left" width="900px" height="100%" border="0" cellpadding="0">
-					<div>
+				<table valign="top" align="left" width="900px" height="100%" border="0" cellpadding="0">
 
+					<div>
+						<img src="3.png" style="width: 900px; height:300px ;"/>
+					</div>
+					<div>
+						
 						<s:form action="search">
-							<s:textfield name="myQuery" label="搜一搜你想去地方（限国内）" style="
-									   border: 1px dotted #AAAAAA;  
-  										 padding:8px 15px 10px 30px;  
-   											margin:1px;  
-   										font:18px Arial;
-" />
+							<s:textfield name="myQuery" cssClass="search1"/>
 							<s:hidden name="userName" />
 							<s:hidden name="passWord" />
-							<s:submit style="
-	background-color:#3bb3e0;
-	padding:10px;
-	position:relative;
-	font-family: 'Open Sans', sans-serif;
-	font-size:12px;
-	text-decoration:none;
-	color:#fff;
-	border: solid 1px #186f8f;
-	background-image: linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
-	background-image: -o-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
-	background-image: -moz-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
-	background-image: -webkit-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
-	background-image: -ms-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
-	background-image: -webkit-gradient(
-	linear,
-	left bottom,
-	left top,
-	color-stop(0, rgb(44,160,202)),
-	color-stop(1, rgb(62,184,229))
-	);
-	-webkit-box-shadow: inset 0px 1px 0px #7fd2f1, 0px 1px 0px #fff;
-	-moz-box-shadow: inset 0px 1px 0px #7fd2f1, 0px 1px 0px #fff;
-	box-shadow: inset 0px 1px 0px #7fd2f1, 0px 1px 0px #fff;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	-o-border-radius: 5px;
-	border-radius: 5px;
-									" />
+							<s:submit cssClass="button1"/>
 						</s:form>
+					</div>
+
+					<div id="slideshow">
+						<div class="current">
+							<img src="1.jpg" alt="" />
+
+							<span>欢迎来到DIVCSS5</span>
+						</div>
+						<div>
+							<img src="2.jpg" alt="" />
+
+							<span>DIVCSS5提供更多资源</span>
+						</div>
+						<div>
+							<img src="3.jpg" alt="" />
+
+							<span>Yes, thd third.</span>
+						</div>
+						<div>
+
+							<img src="4.jpg" alt="" />
+
+							<span>1.2.3.4...</span>
+						</div>
+						<div>
+
+							<img src="5.jpg" alt="" />
+
+							<span>学CSS上DIVCSS5</span>
+						</div>
 					</div>
 				</table>
 

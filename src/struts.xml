@@ -3,6 +3,9 @@
 <struts>
 	<constant name="struts.i18n.encoding" value="utf-8" />
 	<package name="basicstruts2" extends="struts-default">
+	    <action name="" class="Login" method="index">
+			<result name="success">/index.jsp</result>
+		</action>
 		<action name="login" class="Login" method="execute">
 			<result name="success">/successLogin.jsp</result>
 			<result name="wrongPassword">/wrongPassword.jsp</result>
@@ -25,6 +28,13 @@
 			<result name="usernameShort">/usernameShort.jsp</result>
 			<result name="exist">/exist.jsp</result>
 		</action>
+		<action name="addMoreInfo" class="Login" method="contactUserName">
+			<result name="success">/addMoreInfo.jsp</result>
+		</action>
+		<action name="addMoreInfo2" class="Register" method="addMoreInfo">
+			<result name="success">/successLogin.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
 		<action name="addIntention" class="Intention" method="addIntention">
 			<result name="success">/successAddIntention.jsp</result>
 			<result name="error">/error.jsp</result>
@@ -44,7 +54,7 @@
 			<result name="error">/error.jsp</result>
 		</action>
 		<action name="deleteIntention" class="Intention" method="deleteIntention">
-			<result name="success">/successDelete.jsp</result>
+			<result name="success">/showIntentionOne.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
 		<action name="linkNode" class="LinkNode" method="addLink">

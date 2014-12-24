@@ -27,7 +27,7 @@ import org.apache.lucene.util.Version;
  */
 public class index {
 	private static long count=0;
-	public static void main() throws Exception {
+	public static void main(String[] args) throws Exception {
 		// indexDir is the directory that hosts Lucene's index files
 		File indexDir = new File("D:\\luceneIndex");
 		// dataDir is the directory that hosts the text files that to be indexed

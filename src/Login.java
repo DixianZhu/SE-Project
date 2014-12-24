@@ -37,6 +37,12 @@ public class Login extends ActionSupport {
 	public String getGender(){
 		return gender;
 	}
+	public void setGender(String gender){
+		this.gender=gender;
+	}
+	public void setRealName(String realName){
+		this.realName=realName;
+	}
 	
 	public String getAge(){
 		return age;
@@ -60,7 +66,10 @@ public class Login extends ActionSupport {
 	public String login(){
 		return SUCCESS;
 	}
-	
+	public String contactUserName() throws Exception {
+		System.out.println("contact :"+userName);
+		return SUCCESS;
+	}
 	public String execute() throws Exception {
 		Connection conn = null;
 		ResultSet rs = null;
