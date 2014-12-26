@@ -5,7 +5,7 @@
 <head>
 <style type="text/css">
       body {
-    width: 600px;
+    width: 900px;
     margin: 40px auto;
     font-family: 'trebuchet MS', 'Lucida sans', Arial;
     font-size: 14px;
@@ -102,7 +102,7 @@ table {
     <tr>
         <th>编号</th>        
         <th>目的地</th>
-		<th>#</th>
+		<th>  </th>
     </tr>
     </thead>
 		<h1>请选择景点</h1>

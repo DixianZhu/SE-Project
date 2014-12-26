@@ -93,6 +93,8 @@ table {
     -webkit-border-radius: 0 0 6px 0;
     border-radius: 0 0 6px 0;
 }
+
+
 .button {
  display: inline-block;
  position: relative;
@@ -153,9 +155,9 @@ table {
         <th>编号</th>        
         <th>目的地</th>
         <th>出发时间</th>
-		<th>#</th>
-		<th>#</th>
-		<th>#</th>
+		<th>详细信息</th>
+		<th>百度地图</th>
+		<th>  </th>
     </tr>
     </thead>
 	     
@@ -190,18 +192,19 @@ table {
 	</s:iterator>
 	</table>
 	
-	<a
+	<dl><dd><a
 		href='<s:url action="contactUserName">
 	    <s:param name="userName" value="userName"/>
 	    <s:param name="passWord" value="passWord"/>
 	</s:url>' class="button blue" >添加一个新旅游意向</a>
-		<br>
+
 	<a
 		href='<s:url action="login">
 		<s:param name="userName" value="userName"/>
 		<s:param name="passWord" value="passWord"/>
 				  </s:url>' class="button blue">返回主界面
-		</a>
+		</a></dd></dl>
+	
 		</td>
 	</tr>
 	</table>

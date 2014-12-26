@@ -61,7 +61,10 @@ else
 						box-shadow: 0 1px 5px rgba(0, 0, 0, .2);" />
 		</s:form >
 
-		<a href='RegisterMoreInfo.jsp'>Don't have an account?</a>	
+		<a href='RegisterMoreInfo.jsp'>Don't have an account?</a>
+		<br>
+		<a href='<s:url action="showMessage">
+				  </s:url>'>给我们反馈</a>	
 		</td>
 		</tr>
 		</table>
@@ -71,7 +74,6 @@ else
   <tr>
     <th height="21" scope="row">&nbsp;</th>
   </tr>
-</table>
-
+</table>	
 </body>
 </html>

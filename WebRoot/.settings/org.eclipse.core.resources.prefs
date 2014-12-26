@@ -1,2 +1,11 @@
 eclipse.preferences.version=1
+encoding/RegisterMoreInfo.jsp=GB2312
+encoding/addIntention.jsp=GB2312
+encoding/moreOthersCommition.jsp=GB2312
+encoding/showIntentionOne.jsp=GB2312
+encoding/showOthersCommition.jsp=GB2312
+encoding/showSightInfo.jsp=GB2312
+encoding/showTeamMates.jsp=GB2312
+encoding/successAddCommition.jsp=GB2312
+encoding/successAddIntention.jsp=GB2312
 encoding/successLogin.jsp=GB2312

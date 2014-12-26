@@ -2,54 +2,19 @@
 <%@ page contentType="text/html;charset=utf-8" pageEncoding="GBK"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
-<link rel="stylesheet" href="bootstrap.css" type="text/css">
+<script type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
+
 <meta charset="utf-8">
 <head>
-<script type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
 <style type="text/css">
       body {
-    width: 900px;
+    width: 600px;
     margin: 40px auto;
     font-family: 'trebuchet MS', 'Lucida sans', Arial;
     font-size: 14px;
     color: #444;
 }
-.button {
- display: inline-block;
- position: relative;
- margin: 10px;
- padding: 0 20px;
- text-align: center;
- text-decoration: none;
- text-shadow: 1px 1px 1px rgba(255,255,255,.22);
- font: bold 12px/25px Arial, sans-serif;
 
- -webkit-border-radius: 30px;
- -moz-border-radius: 30px;
- border-radius: 30px;
-
- -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,.29), inset 1px 1px 1px rgba(255,255,255,.44);
- -moz-box-shadow: 1px 1px 1px rgba(0,0,0,.29), inset 1px 1px 1px rgba(255,255,255,.44);
- box-shadow: 1px 1px 1px rgba(0,0,0,.29), inset 1px 1px 1px rgba(255,255,255,.44);
-
- -webkit-transition: all 0.15s ease;
- -moz-transition: all 0.15s ease;
- -o-transition: all 0.15s ease;
- -ms-transition: all 0.15s ease;
- transition: all 0.15s ease;
-}
-
- .button:hover {
-  -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,.29), inset 0px 0px 2px rgba(0,0,0, .5);
-  -moz-box-shadow: 1px 1px 1px rgba(0,0,0,.29), inset 0px 0px 2px rgba(0,0,0, .5);
-  box-shadow: 1px 1px 1px rgba(0,0,0,.29), inset 0px 0px 2px rgba(0,0,0, .5);
- }
-
- .button:active {
-  -webkit-box-shadow: inset 0px 0px 3px rgba(0,0,0, .8);
-  -moz-box-shadow: inset 0px 0px 3px rgba(0,0,0, .8);
-  box-shadow: inset 0px 0px 3px rgba(0,0,0, .8);
- }
 table {
     *border-collapse: collapse; /* IE7 and lower */
     border-spacing: 0;
@@ -157,67 +122,41 @@ function setHeight() { text.style.height = shadow.scrollHeight + "px"; }
 </script>
 </head>
 <body bgcolor="#FFF8DC">
+<table align="center" valign="center" width="1500">
+					<tr>					
+						<td align="center" valign="center" width="300" bgcolor="#97CBFF">
+							<h2>评论与建议</h2> <font size="2" color="#000000">
+							<s:form action="addMessage">
+									<s:textfield name="userName" label="评论人(可匿名)" value="" />
+									<s:textarea  name="message" label="评论与建议" value="" id="text"/>
+									<s:submit />
+								</s:form> </font>
+						</td>
+						</tr>
+				</table>
 	<table class="bordered">
+	
 <thead>
-
+	
     <tr>
-        <th>楼层</th>        
-        <th>评论人</th>
-        <th>目的地</th>
-		<th>出发时间</th>
+        <th>楼层</th>
+        <th>评论人</th>        
 		<th>评论</th>
-		<th>  </th>
     </tr>
     </thead>
 				<s:iterator value="res" status="itStatus" id='n'>
-					<tr>
-					
+					<tr>		
 					<td><s:property value="#itStatus.count" /></td>
 					<td><s:property value='#n[0]' /></td>
 					<td><s:property value='#n[1]' /></td>
-					<td><s:property value='#n[2]' /></td>
-					<td><s:property value='#n[3]' /></td> 
-					<td><a
-						href='<s:url action="deleteCommition">
-		<s:param name="userName" value="userName" />
-		<s:param name="passWord" value="passWord"/>
-		<s:param name="intendPlace" value="#n[1]"/>
-		<s:param name="intendTime" value="#n[2]"/>
-		<s:param name="commition" value="#n[3]"/>
-		<s:param name="realName">More</s:param>
-		<s:param name="num" value="#itStatus.count" />
-				  </s:url>'><s:property value='#n[4]' />
-					</a></td>
 					</tr>
 				</s:iterator>
 				</table>
 				<table>
-					<tr>
-					
-						<td align="center" valign="center" width="300" bgcolor="FFFFBC">
-							<h2>发表评论</h2> <font size="2" color="#000000"><s:form
-									action="addCommition">
-									<s:hidden name="userName" />
-									<s:hidden name="passWord" />
-									<s:hidden name="intendPlace"/>
-									<s:hidden name="typeString" />
-									
-									<s:textfield name="intendTime" label="出发时间" value="" onclick="WdatePicker()"/>
-									<s:textarea  name="commition" label="comment" value="" id="text"/>
-									<s:submit /></s:form> </font>
+				<td >
+						<a href='index.jsp'>返回
+				  		</a>	
 						</td>
-						
-						
-					</tr>
-				</table> 
-				<dd style="height:20px"></dd>
-	<dd  class="btn">
-	<a
-		href='<s:url action="login">
-		<s:param name="userName" value="userName"/>
-		<s:param name="passWord" value="passWord"/>
-				  </s:url>' class="button blue">返回主界面
-		</a></dd>
-	</dl>
+				</table>
 </body>
 </html>

@@ -113,13 +113,13 @@ input[type=submit] {
 		<s:hidden name="gender" label="gender"/>
 		<s:hidden name="realName" label="realName"/>
 		
-		<s:textfield name="age" label="age" required="true"/>
+		<s:textfield name="age" label="年龄" required="true"/>
 		<br>
-		<s:textfield name="location" label="location" required="true"/>
+		<s:textfield name="location" label="所在地" required="true"/>
 		<br>
-		<s:textfield name="occupation" label="occupation" required="true"/>
+		<s:textfield name="occupation" label="职业" required="true"/>
 		<br>
-		<s:textfield name="hobby" label="hobby" required="true"/>
+		<s:textfield name="hobby" label="兴趣" required="true"/>
 		<br>
 		
 		<s:submit />

@@ -32,8 +32,8 @@ html {
 
 body {
 	background: #728eaa;
-	background: -moz-linear-gradient(top, #25303C 0%, #728EAA 100%); /* firefox */	
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#25303C), color-stop(100%,#728EAA)); /* webkit */
+	background: -moz-linear-gradient(top, #7EC0EE 0%, #7FFFD4 100%); /* firefox */	
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7EC0EE), color-stop(100%,#7FFFD4)); /* webkit */
 	font-family: sans-serif; 
 }
 
@@ -52,17 +52,17 @@ h1 {
 label {
 	float: left; clear: left; margin: 11px 20px 0 0; width: 95px;
 	text-align: right; font-size: 16px; color: #445668; 
-	text-transform: uppercase; text-shadow: 0px 1px 0px #f2f2f2;
+	text-transform: uppercase; text-shadow: 0px 1px 0px  #EEE9E9;
 }
 
 input {
 	width: 260px; height: 35px; padding: 5px 20px 0px 20px; margin: 0 0 20px 0; 
 	background: #5E768D;
-	background: -moz-linear-gradient(top, #546A7F 0%, #5E768D 20%); /* firefox */
+	background: -moz-linear-gradient(top, #F5F5F5 0%,#EEE9E9 20%); /* firefox */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#546A7F), color-stop(20%,#5E768D)); /* webkit */
 	border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
 	-moz-box-shadow: 0px 1px 0px #f2f2f2;-webkit-box-shadow: 0px 1px 0px #f2f2f2;
-	font-family: "Times New Roman",Georgia,Serif; font-size: 16px; color: #f2f2f2;  text-shadow: 0px -1px 0px #334f71; 
+	font-family: "Times New Roman",Georgia,Serif; font-size: 16px; color: ##000000;  text-shadow: 0px -1px 0px #334f71; 
 }
 	input::-webkit-input-placeholder  {
     	color: #a1b2c3; text-shadow: 0px -1px 0px #38506b;  
@@ -89,7 +89,7 @@ textarea {
 	
 input:focus, textarea:focus {
 	background: #728eaa;
-	background: -moz-linear-gradient(top, #668099 0%, #728eaa 20%); /* firefox */
+	background: -moz-linear-gradient(top, #F5F5F5 0%, #F5F5F5 20%); /* firefox */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#668099), color-stop(20%,#728eaa)); /* webkit */
 }
 
@@ -109,14 +109,15 @@ input[type=submit] {
 	   <form action="register_two" method="post">
 		<fieldset>
 		
-		<s:textfield name="userName" label="user name" required="true" onkeyup="ischange(this.id)"/>
-		<div  id="f" style="display:none">字符长度应>7</div>
+		<s:textfield name="userName" label="用户名" required="true" onkeyup="ischange(this.id)"/>
+		<div  id="f" style="display:none">字符和密码长度应大于7</div>
 		<br>
-		<s:textfield name="passWord" label="pass word" required="true"/>
+		<s:textfield name="passWord" label="密码" required="true" onkeyup="ischange(this.id)"/>
+		<div  id="f" style="display:none">密码长度应大于7</div>
 		<br>
-		<s:textfield name="realName" label="real name" required="true"/>
+		<s:textfield name="realName" label="真实姓名" required="true"/>
 		<br>
-		<s:select label="gender"
+		<s:select label="性别"
        	name="gender"
        	headerKey="-1" headerValue="请选择"
        	list="{'男','女','不确定'}"

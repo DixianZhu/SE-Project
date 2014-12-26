@@ -121,5 +121,17 @@
 			<result name="success">/successAddIntention.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
+		<action name="addMessage" class="message" method="addMessage">
+			<result name="success">/message.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="showMessage" class="message" method="showMessage">
+			<result name="success">/message.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="seeOthersInfo" class="Intention" method="seeOthersInfo">
+			<result name="success">/seeOthersInfo.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
 	</package>
 </struts>    

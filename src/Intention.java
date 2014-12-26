@@ -14,8 +14,15 @@ public class Intention extends ActionSupport {
 	private String intendFriendLocation;
 	private String intendFriendHobby;
 	private String teamName;
+	private String tempUserName;
 	private String userName;
 	private String passWord;
+	private String realName;
+	private String gender;
+	private String age;
+	private String location;
+	private String occupation;
+	private String hobby;
 	private String url = "jdbc:mysql://localhost:3306/trip";
 	private String user = "root";
 	private String psw = "2121778";
@@ -27,6 +34,35 @@ public class Intention extends ActionSupport {
 	private String invite2;
 	private String invite3;
 	private String word;
+	
+	public String getRealName(){
+		return realName;
+	}
+	public String getGender(){
+		return gender;
+	}
+	public void setGender(String gender){
+		this.gender=gender;
+	}
+	public void setRealName(String realName){
+		this.realName=realName;
+	}
+	
+	public String getAge(){
+		return age;
+	}
+	
+	public String getLocation(){
+		return location;
+	}
+	
+	public String getOccupation(){
+		return occupation;
+	}
+	
+	public String getHobby(){
+		return hobby;
+	}
 	public String getApply1(){
 		return apply1;
 	}
@@ -157,7 +193,13 @@ public class Intention extends ActionSupport {
 	public String getUserName() {
 		return userName;
 	}
-    
+	public void setTempUserName(String tempUserName) {
+		this.tempUserName = tempUserName;
+	}
+
+	public String getTempUserName() {
+		return tempUserName;
+	}
 	public void setPassWord(String passWord) {
 		this.passWord = passWord;
 	}
@@ -182,7 +224,25 @@ public class Intention extends ActionSupport {
 		System.out.println("contact :"+userName);
 		return SUCCESS;
 	}
-
+	
+	public String seeOthersInfo() throws Exception {
+		System.out.println("tempUserName is :"+tempUserName);
+		System.out.println("passWord is :"+passWord);
+		System.out.println();
+		Login tempL=new Login();
+		tempL.setUserName(userName);
+		tempL.seeOthersInfo();
+		this.realName=tempL.getRealName();
+		this.gender=tempL.getGender();
+		this.age=tempL.getAge();
+		this.location=tempL.getLocation();
+		this.occupation=tempL.getOccupation();
+		this.hobby=tempL.getHobby();
+		System.out.println("intention :The realName is :"+realName);
+		System.out.println("intention :The age is :"+age);
+		showIntentionOne();
+		return SUCCESS;
+	}
 	public String showIntentionOne() throws Exception {
 		Connection conn = null;
 		ResultSet rs = null;

@@ -30,19 +30,17 @@
 						text-align: center;
 					}
 					.button {
-						width: 60%;
+						width: 300px;
+						height: 25px;
 						display: inline-block;
 						outline: none;
 						cursor: pointer;
 						text-align: center;
 						text-decoration: none;
-						font: 18px/80%;
+						font: 24px;
 						font-style: normal;
 						padding: .5em 2em .55em;
 						text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
-						-webkit-border-radius: .5em;
-						-moz-border-radius: .5em;
-						border-radius: .5em;
 						-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, .2);
 						-moz-box-shadow: 0 1px 5px rgba(0, 0, 0, .2);
 						box-shadow: 0 1px 5px rgba(0, 0, 0, .2);
@@ -172,7 +170,7 @@
 		</style>
 		<table width="100%" height="100%" border="0" cellpadding="0">
 			<td width="300px">
-				<table class="t1" border="0" cellpadding="0" bgcolor="#787878">
+				<table class="t1" border="0" cellpadding="0" bgcolor="#497F7F">
 					<tr>
 						<td align="center" valign="top">
 							<br />
@@ -338,7 +336,7 @@
 					</th>
 					<th>申请时间：</th>
 					<th>
-						#
+						  
 					</th>
 					<s:iterator value="applySet" status="itStatus" id="n">
 					<tr>
@@ -355,7 +353,7 @@
 
 		<s:param name="intendPlace" value="intendPlace"/>
 
-		<s:param name="addTeamFlag" value="' Yes '"/>
+		<s:param name="addTeamFlag">Yes</s:param>
 
 				  </s:url>'>同意申请 </a></td>
 					
@@ -369,7 +367,7 @@
 					</th>
 					<th>邀请时间：</th>
 					<th>
-						#
+						  
 					</th>
 					<s:iterator value="inviteSet" status="itStatus" id="n">
 					<tr>
@@ -401,13 +399,13 @@
 					</th>
 					<th>邀请人</th>
 					<th>
-						#
+						  
 					</th>
 					<th>
 						我的邀请：
 					</th>
 					<th>受邀人</th>
-					<th>#</th>
+					<th>  </th>
 					</tr>
 					<tr>
 						<td>我的申请1</td>
@@ -421,9 +419,8 @@
 
 					<s:param name="intendPlace" value="intendPlace"/>
 
-					<s:param name="clearType" value="' apply '"/>
-
-					<s:param name="clearFlag" value="'1 '"/>
+					<s:param name="clearType">apply1</s:param>
+					<s:param name="clearFlag">1</s:param>
 
 				 	 </s:url>'>撤销</a>
 							<td>我的邀请1</td>
@@ -437,9 +434,9 @@
 
 						<s:param name="intendPlace" value="intendPlace"/>
 
-						<s:param name="clearType" value="' invite '"/>
+						<s:param name="clearType">invite1</s:param>
 
-						<s:param name="clearFlag" value="'1 '"/>
+						<s:param name="clearFlag">1</s:param>
 
 				 	 </s:url>'>撤销</a>
 							</td>
@@ -453,8 +450,8 @@
 		<s:param name="userName" value="userName" />
 		<s:param name="passWord" value="passWord"/>
 		<s:param name="intendPlace" value="intendPlace"/>
-		<s:param name="clearType" value="' apply '"/>
-		<s:param name="clearFlag" value="'2 '"/>
+		<s:param name="clearType">apply2</s:param>
+		<s:param name="clearFlag">2</s:param>
 				  </s:url>'>撤销</a>
 							<td>我的邀请2</td>
 							<td><s:property value="invite2" />
@@ -463,8 +460,8 @@
 		<s:param name="userName" value="userName" />
 		<s:param name="passWord" value="passWord"/>
 		<s:param name="intendPlace" value="intendPlace"/>
-		<s:param name="clearType" value="' invite '"/>
-		<s:param name="clearFlag" value="'2 '"/>
+		<s:param name="clearType">invite2</s:param>
+		<s:param name="clearFlag">2</s:param>
 				  </s:url>'>撤销</a>
 							</td>
 					</tr>
@@ -476,8 +473,8 @@
 		<s:param name="userName" value="userName" />
 		<s:param name="passWord" value="passWord"/>
 		<s:param name="intendPlace" value="intendPlace"/>
-		<s:param name="clearType" value="' apply '"/>
-		<s:param name="clearFlag" value="'3 '"/>
+		<s:param name="clearType">apply3</s:param>
+		<s:param name="clearFlag">3</s:param>
 				  </s:url>'>撤销	</a>
 							<td>我的邀请3</td>
 							<td><s:property value="invite3" />
@@ -486,8 +483,8 @@
 		<s:param name="userName" value="userName" />
 		<s:param name="passWord" value="passWord"/>
 		<s:param name="intendPlace" value="intendPlace"/>
-		<s:param name="clearType" value="' invite '"/>
-		<s:param name="clearFlag" value="'3 '"/>
+		<s:param name="clearType">invite3</s:param>
+		<s:param name="clearFlag">3</s:param>
 				  </s:url>'>撤销</a>
 							</td>
 					</tr>

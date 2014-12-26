@@ -70,6 +70,40 @@ public class Login extends ActionSupport {
 		System.out.println("contact :"+userName);
 		return SUCCESS;
 	}
+	public String seeOthersInfo() throws Exception {
+		Connection conn = null;
+		ResultSet rs = null;
+		Statement stmt = null;
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(url, user, psw);
+			if (!conn.isClosed())
+				System.out.println("Success connecting to the Database!");
+			else
+				System.out.println("Fail connecting to the Database!");
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery("select * from member where user_name = '"
+					+ userName + "'");
+			if(rs.next()){
+				realName=rs.getString("real_name");
+				gender=rs.getString("gender");
+				age=rs.getString("age");
+				location=rs.getString("location");
+				occupation=rs.getString("occupation");
+				hobby=rs.getString("hobby");
+				System.out.println("login :The realName is :"+realName);
+				System.out.println("login :The age is :"+age);
+				System.out.println("login :The userName is :"+userName);
+				return SUCCESS;
+			}else{
+				return "wrongPassword";
+			}
+		}catch (Exception e) {
+			System.out.println("connection error!");
+			e.printStackTrace();
+			return ERROR;
+		}
+	}
 	public String execute() throws Exception {
 		Connection conn = null;
 		ResultSet rs = null;

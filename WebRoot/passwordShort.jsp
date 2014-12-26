@@ -3,7 +3,7 @@
 
 <html>
 <body>
-		<h1>user name is too short (at least 7)</h1>
+		<h1>pass word is too short (at least 7)</h1>
 		<br> <a href="index.jsp">Exit</a>
 </body>
 </html>

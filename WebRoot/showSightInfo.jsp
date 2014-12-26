@@ -6,7 +6,7 @@
 <table  width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr >
 	<td align="center" valign="center">	
-	检索结果
+	<h2>检索结果</h2>
 	<br>
 	<br>
 	<a

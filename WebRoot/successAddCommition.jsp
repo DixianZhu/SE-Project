@@ -8,13 +8,48 @@
 <head>
 <style type="text/css">
       body {
-    width: 600px;
+    width: 900px;
     margin: 40px auto;
     font-family: 'trebuchet MS', 'Lucida sans', Arial;
     font-size: 14px;
     color: #444;
 }
+.button {
+ display: inline-block;
+ position: relative;
+ margin: 10px;
+ padding: 0 20px;
+ text-align: center;
+ text-decoration: none;
+ text-shadow: 1px 1px 1px rgba(255,255,255,.22);
+ font: bold 12px/25px Arial, sans-serif;
 
+ -webkit-border-radius: 30px;
+ -moz-border-radius: 30px;
+ border-radius: 30px;
+
+ -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,.29), inset 1px 1px 1px rgba(255,255,255,.44);
+ -moz-box-shadow: 1px 1px 1px rgba(0,0,0,.29), inset 1px 1px 1px rgba(255,255,255,.44);
+ box-shadow: 1px 1px 1px rgba(0,0,0,.29), inset 1px 1px 1px rgba(255,255,255,.44);
+
+ -webkit-transition: all 0.15s ease;
+ -moz-transition: all 0.15s ease;
+ -o-transition: all 0.15s ease;
+ -ms-transition: all 0.15s ease;
+ transition: all 0.15s ease;
+}
+
+ .button:hover {
+  -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,.29), inset 0px 0px 2px rgba(0,0,0, .5);
+  -moz-box-shadow: 1px 1px 1px rgba(0,0,0,.29), inset 0px 0px 2px rgba(0,0,0, .5);
+  box-shadow: 1px 1px 1px rgba(0,0,0,.29), inset 0px 0px 2px rgba(0,0,0, .5);
+ }
+
+ .button:active {
+  -webkit-box-shadow: inset 0px 0px 3px rgba(0,0,0, .8);
+  -moz-box-shadow: inset 0px 0px 3px rgba(0,0,0, .8);
+  box-shadow: inset 0px 0px 3px rgba(0,0,0, .8);
+ }
 table {
     *border-collapse: collapse; /* IE7 and lower */
     border-spacing: 0;
@@ -131,7 +166,7 @@ function setHeight() { text.style.height = shadow.scrollHeight + "px"; }
         <th>目的地</th>
 		<th>出发时间</th>
 		<th>评论</th>
-		<th>#</th>
+		<th>  </th>
     </tr>
     </thead>
 				<s:iterator value="res" status="itStatus" id='n'>
@@ -171,14 +206,14 @@ function setHeight() { text.style.height = shadow.scrollHeight + "px"; }
 						</td>
 						</tr>
 				</table>
-				<table>
-				<td >
-						<a href='<s:url action="login">	
-							<s:param name="userName" value="userName"/>
-							<s:param name="passWord" value="passWord"/>
-				  			</s:url>'>返回主界面
-				  		</a>	
-						</td>
-				</table>
+				<dd style="height:20px"></dd>
+	<dd  class="btn">
+	<a
+		href='<s:url action="login">
+		<s:param name="userName" value="userName"/>
+		<s:param name="passWord" value="passWord"/>
+				  </s:url>' class="button blue">返回主界面
+		</a></dd>
+	</dl>
 </body>
 </html>

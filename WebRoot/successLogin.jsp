@@ -36,7 +36,7 @@
 	<body bgcolor="#FFF8DC">
 		<table width="100%" height="100%" border="0" cellpadding="0" ;>
 			<td>
-				<table width="300px" height="100%" border="0" cellpadding="0" bgcolor="#787878">
+				<table width="300px" height="100%" border="0" cellpadding="0" bgcolor="#497F7F">
 					<tr>
 						<td align="center" valign="top">
 							<br />
@@ -119,6 +119,7 @@
 
 					<div>
 						<img src="3.png" style="width: 900px; height:300px ;"/>
+						<br />
 					</div>
 					<div>
 						
@@ -132,31 +133,31 @@
 
 					<div id="slideshow">
 						<div class="current">
-							<img src="1.jpg" alt="" />
+							<img src="one.jpg" alt="" />
 
-							<span>欢迎来到DIVCSS5</span>
+							<span>法国鲁昂,典型的法国田园风光</span>
 						</div>
 						<div>
-							<img src="2.jpg" alt="" />
+							<img src="two.jpg" alt="" />
 
-							<span>DIVCSS5提供更多资源</span>
+							<span>美国密西西比的纳齐兹到田纳西的纳什维尔的一条古道。</span>
 						</div>
 						<div>
-							<img src="3.jpg" alt="" />
+							<img src="three.jpg" alt="" />
 
-							<span>Yes, thd third.</span>
-						</div>
-						<div>
-
-							<img src="4.jpg" alt="" />
-
-							<span>1.2.3.4...</span>
+							<span>魁北克市是一座法兰西风味浓郁、历史悠久的文化名城。</span>
 						</div>
 						<div>
 
-							<img src="5.jpg" alt="" />
+							<img src="four.jpg" alt="" />
 
-							<span>学CSS上DIVCSS5</span>
+							<span>“夜上海，夜上海，你是一个不夜城，酒不醉人，人自醉”……</span>
+						</div>
+						<div>
+
+							<img src="five.jpg" alt="" />
+
+							<span>葡萄牙亚速尔群岛海岸附近的抹香鲸</span>
 						</div>
 					</div>
 				</table>

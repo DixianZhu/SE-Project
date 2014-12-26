@@ -23,6 +23,7 @@ public class LinkNode extends ActionSupport {
 	private String intendFriendHobby;
 	private String typeString;
 	private String teamName;
+	private String tempTeamName;
 	private String apply1;
 	private String apply2;
 	private String apply3;
@@ -357,6 +358,10 @@ public class LinkNode extends ActionSupport {
 				temp[4] = rs.getString("team_username");
 				res.add(temp);
 			}
+			if("对方已存在队伍！".equals(typeString))
+			{
+				userName=tempTeamName;
+			}
 			if (teamName == null) {
 				typeString = "暂无队伍";
 			} else {
@@ -451,9 +456,10 @@ public class LinkNode extends ActionSupport {
 			if (rs.next()) {// 在修改过后这个可以不必判断，因为执行不到 判断是否已存在队伍
 				String temp = rs.getString("team_username");
 				if (temp != null) {
+					tempTeamName=teamName;
 					teamName = temp;
 					showTeam();
-					typeString = "已存在队伍！请先退出队伍再加入新队伍";
+					typeString = "对方已存在队伍！";
 					return "existTeam";
 				}
 				// 加入队伍后把申请者的apply全部撤销
@@ -463,6 +469,12 @@ public class LinkNode extends ActionSupport {
 						+ userName + "' and i_place = '" + intendPlace + "'");
 				stmt.executeUpdate("update intention set apply3 = null where user_name = '"
 						+ userName + "' and i_place = '" + intendPlace + "'");
+				stmt.executeUpdate("update intention set apply1 = null where user_name = '"
+						+ teamName + "' and i_place = '" + intendPlace + "'");
+				stmt.executeUpdate("update intention set apply2 = null where user_name = '"
+						+ teamName + "' and i_place = '" + intendPlace + "'");
+				stmt.executeUpdate("update intention set apply3 = null where user_name = '"
+						+ teamName + "' and i_place = '" + intendPlace + "'");
 			}
 			rs = stmt
 					.executeQuery("select * from intention where user_name = '"
@@ -638,7 +650,9 @@ public class LinkNode extends ActionSupport {
 			else
 				System.out.println("Fail connecting to the Database!");
 			stmt = conn.createStatement();
-				stmt.executeUpdate("update intention set "+clearType+""+clearFlag+" = null where user_name = '" + userName
+			System.out.println(clearType);
+			System.out.println(clearFlag);
+			stmt.executeUpdate("update intention set " + clearType + " = null where user_name = '" + userName
 						+ "' and i_place = '" + intendPlace + "'");
 			addLink();
 			return SUCCESS;

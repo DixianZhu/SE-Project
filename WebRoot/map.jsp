@@ -7,7 +7,7 @@
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<style type="text/css">
 		body, html {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
-		#allmap{width:100%;height:500px;}
+		#allmap{width:100%;height:100%;}
 		p{margin-left:5px; font-size:14px;}
 		#r-result{width:100%;}
 	</style>
@@ -15,8 +15,8 @@
 	<title>中文测试</title>
 </head>
 <body>
-	<div style="margin:0 auto; border:#000000 solid 1px; width:200px; float:left" id="r-result"></div>
-	<div style="margin:0 auto; border:#000000 solid 1px; width:880px; float:left" id="allmap"></div>
+	<div style="margin:0 auto; border:#000000 solid 1px; width:19%; float:left" id="r-result"></div>
+	<div style="margin:0 auto; border:#000000 solid 1px; width:80%; float:right" id="allmap"></div>
 </body>
 </html> 
 <script  type="text/javascript" >
@@ -25,7 +25,7 @@
 	var place = "<s:text name='intendPlace'/>";  
 	map.centerAndZoom(place, 11);
 	var local = new BMap.LocalSearch(place, {
-		renderOptions: {map: map, panel: "r-result",autoViewport: true},pageCapacity: 5
+		renderOptions: {map: map, panel: "r-result",autoViewport: true},pageCapacity: 7
 	});
 	     
 	local.search("景点");

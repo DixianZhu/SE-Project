@@ -168,6 +168,9 @@ public class Register extends ActionSupport {
 		if (passWord.length() < 7) {
 			return "passwordShort";
 		}
+		if (userName.length() < 7) {
+			return "usernameShort";
+		}
 		if (realName.length() == 0) {
 			return "noRealName";
 		} else {
